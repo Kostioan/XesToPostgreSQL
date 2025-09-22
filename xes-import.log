@@ -1,0 +1,1414 @@
+2025-08-14 14:20:50.900 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - === Optimized XES to PostgreSQL Importer ===
+2025-08-14 14:20:50.900 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Designed for large XES files with streaming processing and batch operations
+2025-08-14 14:20:50.900 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Testing database connection...
+2025-08-14 14:20:51.283 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Successfully connected to database: jdbc:postgresql://localhost:5432/FinalDB
+2025-08-14 14:20:51.283 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Database connection test successful
+2025-08-14 14:21:28.422 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Found XES file: 20.xes (14 MB)
+2025-08-14 14:21:40.471 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Successfully connected to database: jdbc:postgresql://localhost:5432/FinalDB
+2025-08-14 14:21:40.471 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Clearing existing data...
+2025-08-14 14:21:40.471 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Clearing existing data from database...
+2025-08-14 14:21:40.495 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Successfully cleared all existing data
+2025-08-14 14:21:40.515 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Database sequences created successfully
+2025-08-14 14:21:40.515 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Starting streaming import of XES file: 20.xes
+2025-08-14 14:21:40.516 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Starting streaming parse of XES file: 20.xes (14 MB)
+2025-08-14 14:21:40.532 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Created log with ID: 1 and name: Unnamed Log
+2025-08-14 14:21:40.716 [main] ERROR com.thesis.xesimporter.BatchXESProcessor - Error processing trace
+java.sql.BatchUpdateException: Batch entry 8 INSERT INTO trace_has_event (sequence, trace_id, event_id) VALUES (0, 2, 9) was aborted: ERROR: duplicate key value violates unique constraint "trace_has_event_pk"
+  Detail: Key (sequence)=(0) already exists.  Call getNextException to see other errors in the batch.
+	at org.postgresql.jdbc.BatchResultHandler.handleError(BatchResultHandler.java:165)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2401)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2133)
+	at org.postgresql.core.v3.QueryExecutorImpl.flushIfDeadlockRisk(QueryExecutorImpl.java:1490)
+	at org.postgresql.core.v3.QueryExecutorImpl.sendQuery(QueryExecutorImpl.java:1515)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:559)
+	at org.postgresql.jdbc.PgStatement.internalExecuteBatch(PgStatement.java:896)
+	at org.postgresql.jdbc.PgStatement.executeBatch(PgStatement.java:919)
+	at org.postgresql.jdbc.PgPreparedStatement.executeBatch(PgPreparedStatement.java:1677)
+	at com.thesis.xesimporter.BatchXESProcessor.executeBatches(BatchXESProcessor.java:407)
+	at com.thesis.xesimporter.BatchXESProcessor.onTrace(BatchXESProcessor.java:316)
+	at com.thesis.xesimporter.StreamingXESParser.parseXESFileStreaming(StreamingXESParser.java:104)
+	at com.thesis.xesimporter.OptimizedXESImporter.processXESFile(OptimizedXESImporter.java:142)
+	at com.thesis.xesimporter.OptimizedXESImporter.run(OptimizedXESImporter.java:52)
+	at com.thesis.xesimporter.OptimizedXESImporter.main(OptimizedXESImporter.java:19)
+Caused by: org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "trace_has_event_pk"
+  Detail: Key (sequence)=(0) already exists.
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2712)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2400)
+	... 13 common frames omitted
+2025-08-14 14:21:40.718 [main] ERROR com.thesis.xesimporter.OptimizedXESImporter - Error during streaming import
+java.lang.RuntimeException: java.sql.BatchUpdateException: Batch entry 8 INSERT INTO trace_has_event (sequence, trace_id, event_id) VALUES (0, 2, 9) was aborted: ERROR: duplicate key value violates unique constraint "trace_has_event_pk"
+  Detail: Key (sequence)=(0) already exists.  Call getNextException to see other errors in the batch.
+	at com.thesis.xesimporter.BatchXESProcessor.onTrace(BatchXESProcessor.java:325)
+	at com.thesis.xesimporter.StreamingXESParser.parseXESFileStreaming(StreamingXESParser.java:104)
+	at com.thesis.xesimporter.OptimizedXESImporter.processXESFile(OptimizedXESImporter.java:142)
+	at com.thesis.xesimporter.OptimizedXESImporter.run(OptimizedXESImporter.java:52)
+	at com.thesis.xesimporter.OptimizedXESImporter.main(OptimizedXESImporter.java:19)
+Caused by: java.sql.BatchUpdateException: Batch entry 8 INSERT INTO trace_has_event (sequence, trace_id, event_id) VALUES (0, 2, 9) was aborted: ERROR: duplicate key value violates unique constraint "trace_has_event_pk"
+  Detail: Key (sequence)=(0) already exists.  Call getNextException to see other errors in the batch.
+	at org.postgresql.jdbc.BatchResultHandler.handleError(BatchResultHandler.java:165)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2401)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2133)
+	at org.postgresql.core.v3.QueryExecutorImpl.flushIfDeadlockRisk(QueryExecutorImpl.java:1490)
+	at org.postgresql.core.v3.QueryExecutorImpl.sendQuery(QueryExecutorImpl.java:1515)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:559)
+	at org.postgresql.jdbc.PgStatement.internalExecuteBatch(PgStatement.java:896)
+	at org.postgresql.jdbc.PgStatement.executeBatch(PgStatement.java:919)
+	at org.postgresql.jdbc.PgPreparedStatement.executeBatch(PgPreparedStatement.java:1677)
+	at com.thesis.xesimporter.BatchXESProcessor.executeBatches(BatchXESProcessor.java:407)
+	at com.thesis.xesimporter.BatchXESProcessor.onTrace(BatchXESProcessor.java:316)
+	... 4 common frames omitted
+Caused by: org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "trace_has_event_pk"
+  Detail: Key (sequence)=(0) already exists.
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2712)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2400)
+	... 13 common frames omitted
+2025-08-14 14:25:44.226 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Found XES file: 20.xes (14 MB)
+2025-08-14 14:25:48.256 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Successfully connected to database: jdbc:postgresql://localhost:5432/FinalDB
+2025-08-14 14:25:48.258 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Clearing existing data...
+2025-08-14 14:25:48.258 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Clearing existing data from database...
+2025-08-14 14:25:48.267 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Successfully cleared all existing data
+2025-08-14 14:25:48.276 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Database sequences created successfully
+2025-08-14 14:25:48.276 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Starting streaming import of XES file: 20.xes
+2025-08-14 14:25:48.276 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Starting streaming parse of XES file: 20.xes (14 MB)
+2025-08-14 14:25:48.278 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Created log with ID: 1 and name: Unnamed Log
+2025-08-14 14:25:50.681 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 1000 traces, 4477 events
+2025-08-14 14:25:50.682 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 1000 traces (rate: {:.1f} traces/sec)
+2025-08-14 14:25:54.278 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 2000 traces, 9851 events
+2025-08-14 14:25:54.278 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 2000 traces (rate: {:.1f} traces/sec)
+2025-08-14 14:25:59.076 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 3000 traces, 15404 events
+2025-08-14 14:25:59.077 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 3000 traces (rate: {:.1f} traces/sec)
+2025-08-14 14:26:04.974 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 4000 traces, 20940 events
+2025-08-14 14:26:04.974 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 4000 traces (rate: {:.1f} traces/sec)
+2025-08-14 14:26:12.013 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 5000 traces, 26537 events
+2025-08-14 14:26:12.014 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 5000 traces (rate: {:.1f} traces/sec)
+2025-08-14 14:26:20.061 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 6000 traces, 32027 events
+2025-08-14 14:26:20.061 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 6000 traces (rate: {:.1f} traces/sec)
+2025-08-14 14:26:28.054 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processing completed: 6886 traces, 36796 events
+2025-08-14 14:26:28.054 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Completed streaming parse: 6886 traces in {:.2f} seconds
+2025-08-14 14:26:28.054 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Streaming import completed in {:.2f} seconds
+2025-08-14 14:26:28.232 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - XES import completed successfully!
+2025-08-20 12:18:42.870 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - === Optimized XES to PostgreSQL Importer ===
+2025-08-20 12:18:42.875 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Designed for large XES files with streaming processing and batch operations
+2025-08-20 12:18:42.877 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Testing database connection...
+2025-08-20 12:18:43.317 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Successfully connected to database: jdbc:postgresql://localhost:5432/FinalDB
+2025-08-20 12:18:43.319 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Database connection test successful
+2025-08-20 12:19:05.550 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Found XES file: 19.xes (7 MB)
+2025-08-20 12:19:12.543 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Successfully connected to database: jdbc:postgresql://localhost:5432/FinalDB
+2025-08-20 12:19:12.543 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Clearing existing data...
+2025-08-20 12:19:12.543 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Clearing existing data from database...
+2025-08-20 12:19:35.436 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Successfully cleared all existing data
+2025-08-20 12:19:35.446 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Database sequences created successfully
+2025-08-20 12:19:35.446 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Starting streaming import of XES file: 19.xes
+2025-08-20 12:19:35.448 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Starting streaming parse of XES file: 19.xes (7 MB)
+2025-08-20 12:19:35.463 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Created log with ID: 2 and name: Unnamed Log
+2025-08-20 12:19:39.459 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 1000 traces, 8520 events
+2025-08-20 12:19:39.459 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 1000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:19:43.641 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 2000 traces, 17523 events
+2025-08-20 12:19:43.642 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 2000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:19:43.999 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processing completed: 2099 traces, 18246 events
+2025-08-20 12:19:43.999 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Completed streaming parse: 2099 traces in {:.2f} seconds
+2025-08-20 12:19:43.999 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Streaming import completed in {:.2f} seconds
+2025-08-20 12:19:44.263 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - XES import completed successfully!
+2025-08-20 12:21:08.596 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Found XES file: 18.xes (31 MB)
+2025-08-20 12:21:20.161 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Successfully connected to database: jdbc:postgresql://localhost:5432/FinalDB
+2025-08-20 12:21:20.161 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Clearing existing data...
+2025-08-20 12:21:20.161 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Clearing existing data from database...
+2025-08-20 12:21:26.164 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Successfully cleared all existing data
+2025-08-20 12:21:26.166 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Database sequences created successfully
+2025-08-20 12:21:26.166 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Starting streaming import of XES file: 18.xes
+2025-08-20 12:21:26.166 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Starting streaming parse of XES file: 18.xes (31 MB)
+2025-08-20 12:21:26.169 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Created log with ID: 3 and name: Unnamed Log
+2025-08-20 12:21:29.765 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 1000 traces, 10534 events
+2025-08-20 12:21:29.765 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 1000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:21:34.048 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 2000 traces, 23023 events
+2025-08-20 12:21:34.048 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 2000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:21:39.163 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 3000 traces, 36466 events
+2025-08-20 12:21:39.164 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 3000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:21:44.776 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 4000 traces, 49939 events
+2025-08-20 12:21:44.777 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 4000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:21:49.965 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 5000 traces, 63001 events
+2025-08-20 12:21:49.965 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 5000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:21:55.155 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 6000 traces, 76068 events
+2025-08-20 12:21:55.155 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 6000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:21:59.339 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 7000 traces, 86188 events
+2025-08-20 12:21:59.340 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 7000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:21:59.507 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processing completed: 7065 traces, 86581 events
+2025-08-20 12:21:59.507 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Completed streaming parse: 7065 traces in {:.2f} seconds
+2025-08-20 12:21:59.507 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Streaming import completed in {:.2f} seconds
+2025-08-20 12:22:02.159 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - XES import completed successfully!
+2025-08-20 12:24:17.850 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Found XES file: 14.xes (1532 MB)
+2025-08-20 12:24:20.716 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Successfully connected to database: jdbc:postgresql://localhost:5432/FinalDB
+2025-08-20 12:24:20.716 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Clearing existing data...
+2025-08-20 12:24:20.716 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Clearing existing data from database...
+2025-08-20 12:26:49.756 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Successfully cleared all existing data
+2025-08-20 12:26:49.757 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Database sequences created successfully
+2025-08-20 12:26:49.757 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Starting streaming import of XES file: 14.xes
+2025-08-20 12:26:49.758 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Starting streaming parse of XES file: 14.xes (1532 MB)
+2025-08-20 12:26:49.759 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Created log with ID: 4 and name: Unnamed Log
+2025-08-20 12:26:55.879 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 1000 traces, 4595 events
+2025-08-20 12:26:55.879 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 1000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:27:01.405 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 2000 traces, 8695 events
+2025-08-20 12:27:01.405 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 2000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:27:07.322 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 3000 traces, 13137 events
+2025-08-20 12:27:07.322 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 3000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:27:13.366 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 4000 traces, 17692 events
+2025-08-20 12:27:13.366 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 4000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:27:19.102 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 5000 traces, 22037 events
+2025-08-20 12:27:19.103 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 5000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:27:25.184 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 6000 traces, 26761 events
+2025-08-20 12:27:25.184 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 6000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:27:31.453 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 7000 traces, 31356 events
+2025-08-20 12:27:31.454 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 7000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:27:37.378 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 8000 traces, 35922 events
+2025-08-20 12:27:37.379 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 8000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:27:44.092 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 9000 traces, 40516 events
+2025-08-20 12:27:44.092 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 9000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:27:50.198 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 10000 traces, 44806 events
+2025-08-20 12:27:50.198 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 10000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:27:56.477 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 11000 traces, 49234 events
+2025-08-20 12:27:56.477 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 11000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:28:03.001 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 12000 traces, 53791 events
+2025-08-20 12:28:03.002 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 12000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:28:09.564 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 13000 traces, 58380 events
+2025-08-20 12:28:09.564 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 13000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:28:16.091 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 14000 traces, 62976 events
+2025-08-20 12:28:16.092 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 14000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:28:22.609 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 15000 traces, 67489 events
+2025-08-20 12:28:22.610 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 15000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:28:29.040 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 16000 traces, 72044 events
+2025-08-20 12:28:29.040 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 16000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:28:34.589 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 17000 traces, 75966 events
+2025-08-20 12:28:34.590 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 17000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:28:40.675 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 18000 traces, 80235 events
+2025-08-20 12:28:40.675 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 18000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:28:47.565 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 19000 traces, 84730 events
+2025-08-20 12:28:47.565 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 19000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:28:54.242 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 20000 traces, 89483 events
+2025-08-20 12:28:54.242 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 20000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:29:00.962 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 21000 traces, 94149 events
+2025-08-20 12:29:00.962 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 21000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:29:07.788 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 22000 traces, 98719 events
+2025-08-20 12:29:07.789 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 22000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:29:14.539 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 23000 traces, 103414 events
+2025-08-20 12:29:14.539 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 23000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:29:20.606 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 24000 traces, 107688 events
+2025-08-20 12:29:20.606 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 24000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:29:27.867 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 25000 traces, 112681 events
+2025-08-20 12:29:27.867 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 25000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:29:33.959 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 26000 traces, 116826 events
+2025-08-20 12:29:33.959 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 26000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:29:40.240 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 27000 traces, 121149 events
+2025-08-20 12:29:40.241 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 27000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:29:46.918 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 28000 traces, 125832 events
+2025-08-20 12:29:46.919 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 28000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:29:54.063 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 29000 traces, 130556 events
+2025-08-20 12:29:54.063 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 29000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:30:00.454 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 30000 traces, 135068 events
+2025-08-20 12:30:00.455 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 30000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:30:06.652 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 31000 traces, 139469 events
+2025-08-20 12:30:06.652 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 31000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:30:13.244 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 32000 traces, 144143 events
+2025-08-20 12:30:13.245 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 32000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:30:19.571 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 33000 traces, 148554 events
+2025-08-20 12:30:19.572 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 33000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:30:26.002 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 34000 traces, 153080 events
+2025-08-20 12:30:26.002 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 34000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:30:32.536 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 35000 traces, 157719 events
+2025-08-20 12:30:32.536 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 35000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:30:38.950 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 36000 traces, 162266 events
+2025-08-20 12:30:38.951 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 36000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:30:45.287 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 37000 traces, 166734 events
+2025-08-20 12:30:45.288 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 37000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:30:51.298 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 38000 traces, 170936 events
+2025-08-20 12:30:51.299 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 38000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:30:58.019 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 39000 traces, 175455 events
+2025-08-20 12:30:58.019 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 39000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:31:04.860 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 40000 traces, 180183 events
+2025-08-20 12:31:04.860 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 40000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:31:11.206 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 41000 traces, 184674 events
+2025-08-20 12:31:11.206 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 41000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:31:17.412 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 42000 traces, 189027 events
+2025-08-20 12:31:17.412 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 42000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:31:23.856 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 43000 traces, 193596 events
+2025-08-20 12:31:23.856 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 43000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:31:30.372 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 44000 traces, 198245 events
+2025-08-20 12:31:30.372 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 44000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:31:36.363 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 45000 traces, 202484 events
+2025-08-20 12:31:36.363 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 45000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:31:43.408 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 46000 traces, 207355 events
+2025-08-20 12:31:43.408 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 46000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:31:50.051 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 47000 traces, 211842 events
+2025-08-20 12:31:50.051 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 47000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:31:56.624 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 48000 traces, 216318 events
+2025-08-20 12:31:56.624 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 48000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:32:03.333 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 49000 traces, 220893 events
+2025-08-20 12:32:03.334 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 49000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:32:09.946 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 50000 traces, 225475 events
+2025-08-20 12:32:09.946 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 50000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:32:15.882 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 51000 traces, 229592 events
+2025-08-20 12:32:15.882 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 51000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:32:22.443 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 52000 traces, 234094 events
+2025-08-20 12:32:22.443 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 52000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:32:29.278 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 53000 traces, 238571 events
+2025-08-20 12:32:29.278 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 53000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:32:36.644 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 54000 traces, 243134 events
+2025-08-20 12:32:36.644 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 54000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:32:42.542 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 55000 traces, 247170 events
+2025-08-20 12:32:42.542 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 55000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:32:48.723 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 56000 traces, 251476 events
+2025-08-20 12:32:48.723 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 56000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:32:55.330 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 57000 traces, 256025 events
+2025-08-20 12:32:55.330 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 57000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:33:02.024 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 58000 traces, 260799 events
+2025-08-20 12:33:02.024 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 58000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:33:08.449 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 59000 traces, 265135 events
+2025-08-20 12:33:08.449 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 59000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:33:15.218 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 60000 traces, 269708 events
+2025-08-20 12:33:15.218 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 60000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:33:21.807 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 61000 traces, 274252 events
+2025-08-20 12:33:21.807 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 61000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:33:28.656 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 62000 traces, 278849 events
+2025-08-20 12:33:28.656 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 62000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:33:34.504 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 63000 traces, 282928 events
+2025-08-20 12:33:34.504 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 63000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:33:40.981 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 64000 traces, 287422 events
+2025-08-20 12:33:40.981 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 64000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:33:47.950 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 65000 traces, 292147 events
+2025-08-20 12:33:47.950 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 65000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:33:54.607 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 66000 traces, 296703 events
+2025-08-20 12:33:54.608 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 66000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:34:01.397 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 67000 traces, 301308 events
+2025-08-20 12:34:01.397 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 67000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:34:08.371 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 68000 traces, 306107 events
+2025-08-20 12:34:08.372 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 68000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:34:15.482 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 69000 traces, 310791 events
+2025-08-20 12:34:15.482 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 69000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:34:22.420 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 70000 traces, 315046 events
+2025-08-20 12:34:22.420 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 70000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:34:29.329 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 71000 traces, 319470 events
+2025-08-20 12:34:29.329 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 71000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:34:36.218 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 72000 traces, 324177 events
+2025-08-20 12:34:36.218 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 72000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:34:43.980 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 73000 traces, 328856 events
+2025-08-20 12:34:43.980 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 73000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:34:50.797 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 74000 traces, 333317 events
+2025-08-20 12:34:50.797 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 74000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:34:57.726 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 75000 traces, 337988 events
+2025-08-20 12:34:57.727 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 75000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:35:04.285 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 76000 traces, 342427 events
+2025-08-20 12:35:04.286 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 76000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:35:11.098 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 77000 traces, 346888 events
+2025-08-20 12:35:11.098 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 77000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:35:17.880 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 78000 traces, 351406 events
+2025-08-20 12:35:17.880 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 78000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:35:24.980 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 79000 traces, 356019 events
+2025-08-20 12:35:24.981 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 79000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:35:31.493 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 80000 traces, 360532 events
+2025-08-20 12:35:31.493 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 80000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:35:38.113 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 81000 traces, 365038 events
+2025-08-20 12:35:38.114 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 81000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:35:44.990 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 82000 traces, 369631 events
+2025-08-20 12:35:44.991 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 82000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:35:51.489 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 83000 traces, 373953 events
+2025-08-20 12:35:51.489 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 83000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:35:58.233 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 84000 traces, 378445 events
+2025-08-20 12:35:58.233 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 84000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:36:04.899 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 85000 traces, 382960 events
+2025-08-20 12:36:04.899 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 85000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:36:11.790 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 86000 traces, 387662 events
+2025-08-20 12:36:11.791 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 86000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:36:18.373 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 87000 traces, 392213 events
+2025-08-20 12:36:18.374 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 87000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:36:24.996 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 88000 traces, 396814 events
+2025-08-20 12:36:24.996 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 88000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:36:31.884 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 89000 traces, 401351 events
+2025-08-20 12:36:31.884 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 89000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:36:37.835 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 90000 traces, 405434 events
+2025-08-20 12:36:37.835 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 90000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:36:44.521 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 91000 traces, 410050 events
+2025-08-20 12:36:44.522 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 91000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:36:50.812 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 92000 traces, 414408 events
+2025-08-20 12:36:50.812 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 92000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:36:57.333 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 93000 traces, 418940 events
+2025-08-20 12:36:57.333 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 93000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:37:03.787 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 94000 traces, 423441 events
+2025-08-20 12:37:03.787 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 94000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:37:10.050 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 95000 traces, 427810 events
+2025-08-20 12:37:10.050 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 95000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:37:16.317 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 96000 traces, 432244 events
+2025-08-20 12:37:16.317 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 96000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:37:22.952 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 97000 traces, 436888 events
+2025-08-20 12:37:22.952 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 97000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:37:29.562 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 98000 traces, 441430 events
+2025-08-20 12:37:29.563 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 98000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:37:36.358 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 99000 traces, 446028 events
+2025-08-20 12:37:36.358 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 99000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:37:43.234 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 100000 traces, 450406 events
+2025-08-20 12:37:43.234 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 100000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:37:49.474 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 101000 traces, 454726 events
+2025-08-20 12:37:49.475 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 101000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:37:55.808 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 102000 traces, 459134 events
+2025-08-20 12:37:55.808 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 102000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:38:02.272 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 103000 traces, 463591 events
+2025-08-20 12:38:02.272 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 103000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:38:09.135 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 104000 traces, 468232 events
+2025-08-20 12:38:09.136 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 104000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:38:15.855 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 105000 traces, 472699 events
+2025-08-20 12:38:15.855 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 105000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:38:22.210 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 106000 traces, 477106 events
+2025-08-20 12:38:22.210 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 106000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:38:28.522 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 107000 traces, 481490 events
+2025-08-20 12:38:28.522 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 107000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:38:35.114 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 108000 traces, 486106 events
+2025-08-20 12:38:35.114 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 108000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:38:41.728 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 109000 traces, 490483 events
+2025-08-20 12:38:41.729 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 109000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:38:48.475 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 110000 traces, 494975 events
+2025-08-20 12:38:48.475 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 110000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:38:54.994 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 111000 traces, 499515 events
+2025-08-20 12:38:54.994 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 111000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:39:01.638 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 112000 traces, 504087 events
+2025-08-20 12:39:01.638 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 112000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:39:08.186 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 113000 traces, 508721 events
+2025-08-20 12:39:08.187 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 113000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:39:14.716 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 114000 traces, 513317 events
+2025-08-20 12:39:14.716 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 114000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:39:21.306 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 115000 traces, 517884 events
+2025-08-20 12:39:21.306 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 115000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:39:27.995 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 116000 traces, 522417 events
+2025-08-20 12:39:27.995 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 116000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:39:34.332 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 117000 traces, 526597 events
+2025-08-20 12:39:34.332 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 117000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:39:41.205 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 118000 traces, 531136 events
+2025-08-20 12:39:41.205 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 118000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:39:48.110 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 119000 traces, 535664 events
+2025-08-20 12:39:48.111 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 119000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:39:54.832 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 120000 traces, 540213 events
+2025-08-20 12:39:54.832 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 120000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:40:01.362 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 121000 traces, 544656 events
+2025-08-20 12:40:01.362 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 121000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:40:07.980 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 122000 traces, 549304 events
+2025-08-20 12:40:07.980 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 122000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:40:14.484 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 123000 traces, 553826 events
+2025-08-20 12:40:14.484 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 123000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:40:21.038 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 124000 traces, 558328 events
+2025-08-20 12:40:21.038 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 124000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:40:28.000 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 125000 traces, 562947 events
+2025-08-20 12:40:28.000 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 125000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:40:34.292 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 126000 traces, 567367 events
+2025-08-20 12:40:34.292 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 126000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:40:40.778 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 127000 traces, 571958 events
+2025-08-20 12:40:40.778 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 127000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:40:47.086 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 128000 traces, 576316 events
+2025-08-20 12:40:47.086 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 128000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:40:54.525 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 129000 traces, 581049 events
+2025-08-20 12:40:54.525 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 129000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:41:00.468 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 130000 traces, 585025 events
+2025-08-20 12:41:00.468 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 130000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:41:07.168 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 131000 traces, 589566 events
+2025-08-20 12:41:07.168 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 131000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:41:13.722 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 132000 traces, 593865 events
+2025-08-20 12:41:13.722 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 132000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:41:20.515 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 133000 traces, 598330 events
+2025-08-20 12:41:20.515 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 133000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:41:27.250 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 134000 traces, 602988 events
+2025-08-20 12:41:27.250 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 134000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:41:33.489 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 135000 traces, 607296 events
+2025-08-20 12:41:33.489 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 135000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:41:40.029 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 136000 traces, 611802 events
+2025-08-20 12:41:40.029 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 136000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:41:46.520 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 137000 traces, 616339 events
+2025-08-20 12:41:46.520 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 137000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:41:52.921 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 138000 traces, 620792 events
+2025-08-20 12:41:52.921 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 138000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:41:59.359 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 139000 traces, 625196 events
+2025-08-20 12:41:59.359 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 139000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:42:05.679 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 140000 traces, 629355 events
+2025-08-20 12:42:05.679 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 140000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:42:12.002 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 141000 traces, 633768 events
+2025-08-20 12:42:12.002 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 141000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:42:18.247 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 142000 traces, 638143 events
+2025-08-20 12:42:18.247 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 142000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:42:24.503 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 143000 traces, 642525 events
+2025-08-20 12:42:24.503 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 143000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:42:30.975 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 144000 traces, 647051 events
+2025-08-20 12:42:30.975 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 144000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:42:37.022 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 145000 traces, 651272 events
+2025-08-20 12:42:37.022 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 145000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:42:43.392 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 146000 traces, 655500 events
+2025-08-20 12:42:43.392 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 146000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:42:49.770 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 147000 traces, 659840 events
+2025-08-20 12:42:49.770 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 147000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:42:56.520 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 148000 traces, 664367 events
+2025-08-20 12:42:56.521 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 148000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:43:03.550 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 149000 traces, 669211 events
+2025-08-20 12:43:03.550 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 149000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:43:10.887 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 150000 traces, 673757 events
+2025-08-20 12:43:10.887 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 150000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:43:17.408 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 151000 traces, 678175 events
+2025-08-20 12:43:17.408 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 151000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:43:23.976 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 152000 traces, 682615 events
+2025-08-20 12:43:23.976 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 152000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:43:30.468 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 153000 traces, 686953 events
+2025-08-20 12:43:30.468 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 153000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:43:36.851 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 154000 traces, 691315 events
+2025-08-20 12:43:36.852 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 154000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:43:42.852 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 155000 traces, 695345 events
+2025-08-20 12:43:42.852 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 155000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:43:50.004 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 156000 traces, 700231 events
+2025-08-20 12:43:50.004 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 156000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:43:56.264 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 157000 traces, 704574 events
+2025-08-20 12:43:56.264 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 157000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:44:02.928 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 158000 traces, 709246 events
+2025-08-20 12:44:02.928 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 158000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:44:09.278 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 159000 traces, 713625 events
+2025-08-20 12:44:09.279 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 159000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:44:16.789 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 160000 traces, 718459 events
+2025-08-20 12:44:16.789 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 160000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:44:23.793 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 161000 traces, 723415 events
+2025-08-20 12:44:23.793 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 161000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:44:31.022 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 162000 traces, 728547 events
+2025-08-20 12:44:31.022 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 162000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:44:38.213 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 163000 traces, 733594 events
+2025-08-20 12:44:38.215 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 163000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:44:44.717 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 164000 traces, 738081 events
+2025-08-20 12:44:44.717 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 164000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:44:51.690 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 165000 traces, 743000 events
+2025-08-20 12:44:51.690 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 165000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:44:58.656 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 166000 traces, 747874 events
+2025-08-20 12:44:58.657 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 166000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:45:05.435 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 167000 traces, 752616 events
+2025-08-20 12:45:05.435 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 167000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:45:12.317 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 168000 traces, 757425 events
+2025-08-20 12:45:12.317 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 168000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:45:19.620 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 169000 traces, 762356 events
+2025-08-20 12:45:19.620 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 169000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:45:26.645 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 170000 traces, 767138 events
+2025-08-20 12:45:26.645 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 170000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:45:34.028 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 171000 traces, 772274 events
+2025-08-20 12:45:34.028 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 171000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:45:40.937 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 172000 traces, 777072 events
+2025-08-20 12:45:40.937 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 172000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:45:48.056 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 173000 traces, 781994 events
+2025-08-20 12:45:48.056 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 173000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:45:54.765 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 174000 traces, 786633 events
+2025-08-20 12:45:54.765 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 174000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:46:01.792 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 175000 traces, 791484 events
+2025-08-20 12:46:01.793 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 175000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:46:08.462 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 176000 traces, 796042 events
+2025-08-20 12:46:08.462 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 176000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:46:15.779 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 177000 traces, 800785 events
+2025-08-20 12:46:15.780 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 177000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:46:23.370 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 178000 traces, 805561 events
+2025-08-20 12:46:23.371 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 178000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:46:30.183 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 179000 traces, 810153 events
+2025-08-20 12:46:30.183 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 179000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:46:37.265 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 180000 traces, 815159 events
+2025-08-20 12:46:37.265 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 180000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:46:43.638 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 181000 traces, 819617 events
+2025-08-20 12:46:43.639 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 181000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:46:50.593 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 182000 traces, 824511 events
+2025-08-20 12:46:50.593 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 182000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:46:57.503 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 183000 traces, 829353 events
+2025-08-20 12:46:57.503 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 183000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:47:04.444 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 184000 traces, 834146 events
+2025-08-20 12:47:04.444 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 184000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:47:11.204 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 185000 traces, 838818 events
+2025-08-20 12:47:11.205 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 185000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:47:17.993 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 186000 traces, 843558 events
+2025-08-20 12:47:17.993 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 186000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:47:24.491 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 187000 traces, 848131 events
+2025-08-20 12:47:24.491 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 187000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:47:31.336 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 188000 traces, 852806 events
+2025-08-20 12:47:31.336 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 188000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:47:37.985 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 189000 traces, 857330 events
+2025-08-20 12:47:37.985 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 189000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:47:44.235 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 190000 traces, 861658 events
+2025-08-20 12:47:44.235 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 190000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:47:50.735 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 191000 traces, 866206 events
+2025-08-20 12:47:50.735 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 191000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:47:57.216 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 192000 traces, 870739 events
+2025-08-20 12:47:57.216 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 192000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:48:03.583 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 193000 traces, 875194 events
+2025-08-20 12:48:03.583 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 193000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:48:10.127 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 194000 traces, 879633 events
+2025-08-20 12:48:10.127 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 194000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:48:16.255 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 195000 traces, 883741 events
+2025-08-20 12:48:16.255 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 195000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:48:23.825 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 196000 traces, 888543 events
+2025-08-20 12:48:23.825 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 196000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:48:30.049 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 197000 traces, 892812 events
+2025-08-20 12:48:30.049 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 197000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:48:36.000 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 198000 traces, 896895 events
+2025-08-20 12:48:36.000 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 198000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:48:42.773 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 199000 traces, 901294 events
+2025-08-20 12:48:42.773 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 199000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:48:49.056 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 200000 traces, 905607 events
+2025-08-20 12:48:49.056 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 200000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:48:55.101 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 201000 traces, 909715 events
+2025-08-20 12:48:55.101 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 201000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:49:01.341 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 202000 traces, 914014 events
+2025-08-20 12:49:01.342 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 202000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:49:07.773 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 203000 traces, 918443 events
+2025-08-20 12:49:07.773 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 203000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:49:13.629 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 204000 traces, 922460 events
+2025-08-20 12:49:13.630 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 204000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:49:19.146 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 205000 traces, 926188 events
+2025-08-20 12:49:19.146 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 205000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:49:25.112 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 206000 traces, 930341 events
+2025-08-20 12:49:25.112 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 206000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:49:30.814 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 207000 traces, 934217 events
+2025-08-20 12:49:30.814 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 207000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:49:36.999 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 208000 traces, 938433 events
+2025-08-20 12:49:36.999 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 208000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:49:42.653 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 209000 traces, 942296 events
+2025-08-20 12:49:42.653 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 209000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:49:48.237 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 210000 traces, 945858 events
+2025-08-20 12:49:48.237 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 210000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:49:54.155 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 211000 traces, 949948 events
+2025-08-20 12:49:54.155 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 211000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:49:59.387 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 212000 traces, 953541 events
+2025-08-20 12:49:59.387 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 212000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:50:03.693 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 213000 traces, 956471 events
+2025-08-20 12:50:03.693 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 213000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:50:08.625 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 214000 traces, 959835 events
+2025-08-20 12:50:08.625 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 214000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:50:13.273 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 215000 traces, 963005 events
+2025-08-20 12:50:13.273 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 215000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:50:17.315 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 216000 traces, 965713 events
+2025-08-20 12:50:17.315 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 216000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:50:21.932 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 217000 traces, 968660 events
+2025-08-20 12:50:21.932 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 217000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:50:26.984 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 218000 traces, 972081 events
+2025-08-20 12:50:26.984 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 218000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:50:31.428 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 219000 traces, 975135 events
+2025-08-20 12:50:31.428 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 219000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:50:34.931 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 220000 traces, 977462 events
+2025-08-20 12:50:34.931 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 220000 traces (rate: {:.1f} traces/sec)
+2025-08-20 12:50:38.594 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processing completed: 220810 traces, 979942 events
+2025-08-20 12:50:38.594 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Completed streaming parse: 220810 traces in {:.2f} seconds
+2025-08-20 12:50:38.594 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Streaming import completed in {:.2f} seconds
+2025-08-20 12:53:57.327 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - XES import completed successfully!
+2025-08-28 13:31:57.065 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - === Optimized XES to H2 Database Importer ===
+2025-08-28 13:31:57.070 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Designed for large XES files with streaming processing and built-in performance monitoring
+2025-08-28 13:31:57.071 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Testing H2 database connection...
+2025-08-28 13:31:57.126 [main] ERROR com.thesis.xesimporter.DatabaseConnection - Failed to connect to database: Exception opening port "8082" (port may be in use), cause: "java.net.BindException: Address already in use: NET_Bind" [90061-224]
+2025-08-28 13:31:57.128 [main] ERROR com.thesis.xesimporter.DatabaseConnection - Database connection test failed: Exception opening port "8082" (port may be in use), cause: "java.net.BindException: Address already in use: NET_Bind" [90061-224]
+2025-08-28 13:31:57.128 [main] ERROR com.thesis.xesimporter.OptimizedXESImporter - Cannot connect to H2 database. Check the error messages above.
+2025-08-28 13:32:18.537 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - === Optimized XES to H2 Database Importer ===
+2025-08-28 13:32:18.541 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Designed for large XES files with streaming processing and built-in performance monitoring
+2025-08-28 13:32:18.542 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Testing H2 database connection...
+2025-08-28 13:32:18.594 [main] ERROR com.thesis.xesimporter.DatabaseConnection - Failed to connect to database: Exception opening port "8082" (port may be in use), cause: "java.net.BindException: Address already in use: NET_Bind" [90061-224]
+2025-08-28 13:32:18.595 [main] ERROR com.thesis.xesimporter.DatabaseConnection - Database connection test failed: Exception opening port "8082" (port may be in use), cause: "java.net.BindException: Address already in use: NET_Bind" [90061-224]
+2025-08-28 13:32:18.595 [main] ERROR com.thesis.xesimporter.OptimizedXESImporter - Cannot connect to H2 database. Check the error messages above.
+2025-08-28 13:36:23.742 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - === Optimized XES to H2 Database Importer ===
+2025-08-28 13:36:23.746 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Designed for large XES files with streaming processing and built-in performance monitoring
+2025-08-28 13:36:23.747 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Testing H2 database connection...
+2025-08-28 13:36:23.795 [main] ERROR com.thesis.xesimporter.DatabaseConnection - Failed to connect to database: Exception opening port "8082" (port may be in use), cause: "java.net.BindException: Address already in use: NET_Bind" [90061-224]
+2025-08-28 13:36:23.796 [main] ERROR com.thesis.xesimporter.DatabaseConnection - Database connection test failed: Exception opening port "8082" (port may be in use), cause: "java.net.BindException: Address already in use: NET_Bind" [90061-224]
+2025-08-28 13:36:23.796 [main] ERROR com.thesis.xesimporter.OptimizedXESImporter - Cannot connect to H2 database. Check the error messages above.
+2025-08-28 13:40:38.977 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - === Optimized XES to H2 Database Importer ===
+2025-08-28 13:40:38.981 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Designed for large XES files with streaming processing and built-in performance monitoring
+2025-08-28 13:40:38.982 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Testing H2 database connection...
+2025-08-28 13:40:39.028 [main] ERROR com.thesis.xesimporter.DatabaseConnection - Failed to connect to database: Exception opening port "8082" (port may be in use), cause: "java.net.BindException: Address already in use: NET_Bind" [90061-224]
+2025-08-28 13:40:39.029 [main] ERROR com.thesis.xesimporter.DatabaseConnection - Database connection test failed: Exception opening port "8082" (port may be in use), cause: "java.net.BindException: Address already in use: NET_Bind" [90061-224]
+2025-08-28 13:40:39.029 [main] ERROR com.thesis.xesimporter.OptimizedXESImporter - Cannot connect to H2 database. Check the error messages above.
+2025-08-28 13:41:35.972 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - === Optimized XES to H2 Database Importer ===
+2025-08-28 13:41:35.977 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Designed for large XES files with streaming processing and built-in performance monitoring
+2025-08-28 13:41:35.978 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Testing H2 database connection...
+2025-08-28 13:41:36.013 [main] INFO  com.thesis.xesimporter.DatabaseConnection - H2 Web Console started at: http://localhost:8083
+2025-08-28 13:41:36.014 [main] INFO  com.thesis.xesimporter.DatabaseConnection -   JDBC URL: jdbc:h2:./FinalDB;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH
+2025-08-28 13:41:36.015 [main] INFO  com.thesis.xesimporter.DatabaseConnection -   User: sa
+2025-08-28 13:41:36.015 [main] INFO  com.thesis.xesimporter.DatabaseConnection -   Password: (leave blank)
+2025-08-28 13:41:36.180 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Successfully connected to H2 database: jdbc:h2:./FinalDB;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH
+2025-08-28 13:41:36.180 [main] INFO  com.thesis.xesimporter.DatabaseConnection - H2 database connection test successful
+2025-08-28 13:41:36.180 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Access web console at: http://localhost:8083
+2025-08-28 13:47:12.035 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - === Optimized XES to H2 Database Importer ===
+2025-08-28 13:47:12.040 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Designed for large XES files with streaming processing and built-in performance monitoring
+2025-08-28 13:47:12.042 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Testing H2 database connection...
+2025-08-28 13:47:12.077 [main] INFO  com.thesis.xesimporter.DatabaseConnection - H2 Web Console started at: http://localhost:8083
+2025-08-28 13:47:12.077 [main] INFO  com.thesis.xesimporter.DatabaseConnection -   JDBC URL: jdbc:h2:./FinalDB;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH;AUTO_SERVER=TRUE
+2025-08-28 13:47:12.079 [main] INFO  com.thesis.xesimporter.DatabaseConnection -   User: sa
+2025-08-28 13:47:12.079 [main] INFO  com.thesis.xesimporter.DatabaseConnection -   Password: (leave blank)
+2025-08-28 13:47:12.376 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Successfully connected to H2 database: jdbc:h2:./FinalDB;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH;AUTO_SERVER=TRUE
+2025-08-28 13:47:12.376 [main] INFO  com.thesis.xesimporter.DatabaseConnection - H2 database connection test successful
+2025-08-28 13:47:12.376 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Access web console at: http://localhost:8083
+2025-08-28 13:48:10.271 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - === Optimized XES to H2 Database Importer ===
+2025-08-28 13:48:10.275 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Designed for large XES files with streaming processing and built-in performance monitoring
+2025-08-28 13:48:10.276 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Testing H2 database connection...
+2025-08-28 13:48:10.313 [main] INFO  com.thesis.xesimporter.DatabaseConnection - H2 Web Console started at: http://localhost:8083
+2025-08-28 13:48:10.313 [main] INFO  com.thesis.xesimporter.DatabaseConnection -   JDBC URL: jdbc:h2:./FinalDB;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH;AUTO_SERVER=TRUE
+2025-08-28 13:48:10.315 [main] INFO  com.thesis.xesimporter.DatabaseConnection -   User: sa
+2025-08-28 13:48:10.315 [main] INFO  com.thesis.xesimporter.DatabaseConnection -   Password: (leave blank)
+2025-08-28 13:48:10.628 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Successfully connected to H2 database: jdbc:h2:./FinalDB;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH;AUTO_SERVER=TRUE
+2025-08-28 13:48:10.628 [main] INFO  com.thesis.xesimporter.DatabaseConnection - H2 database connection test successful
+2025-08-28 13:48:10.628 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Access web console at: http://localhost:8083
+2025-08-28 13:50:27.637 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - === Optimized XES to H2 Database Importer ===
+2025-08-28 13:50:27.641 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Designed for large XES files with streaming processing and built-in performance monitoring
+2025-08-28 13:50:27.642 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Testing H2 database connection...
+2025-08-28 13:50:27.666 [main] ERROR com.thesis.xesimporter.DatabaseConnection - Failed to connect to database: Exception opening port "9092" (port may be in use), cause: "java.net.BindException: Address already in use: NET_Bind" [90061-224]
+2025-08-28 13:50:27.667 [main] ERROR com.thesis.xesimporter.DatabaseConnection - Database connection test failed: Exception opening port "9092" (port may be in use), cause: "java.net.BindException: Address already in use: NET_Bind" [90061-224]
+2025-08-28 13:50:27.667 [main] ERROR com.thesis.xesimporter.OptimizedXESImporter - Cannot connect to H2 database. Check the error messages above.
+2025-08-28 13:57:00.846 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - === Optimized XES to H2 Database Importer ===
+2025-08-28 13:57:00.852 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Designed for large XES files with streaming processing and built-in performance monitoring
+2025-08-28 13:57:00.853 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Testing H2 database connection...
+2025-08-28 13:57:01.482 [main] ERROR com.thesis.xesimporter.DatabaseConnection - Failed to connect to database: Wrong user name or password [28000-224]
+2025-08-28 13:57:01.484 [main] ERROR com.thesis.xesimporter.DatabaseConnection - Database connection test failed: Wrong user name or password [28000-224]
+2025-08-28 13:57:01.484 [main] ERROR com.thesis.xesimporter.OptimizedXESImporter - Cannot connect to H2 database. Check the error messages above.
+2025-08-28 13:58:03.605 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - === Optimized XES to H2 Database Importer ===
+2025-08-28 13:58:03.610 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Designed for large XES files with streaming processing and built-in performance monitoring
+2025-08-28 13:58:03.611 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Testing H2 database connection...
+2025-08-28 13:58:03.838 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Successfully connected to H2 database: jdbc:h2:./FinalDB;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH
+2025-08-28 13:58:03.856 [main] INFO  com.thesis.xesimporter.DatabaseConnection - H2 Web Console started at: http://localhost:8084
+2025-08-28 13:58:03.857 [main] INFO  com.thesis.xesimporter.DatabaseConnection -   JDBC URL: jdbc:h2:./FinalDB;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH
+2025-08-28 13:58:03.857 [main] INFO  com.thesis.xesimporter.DatabaseConnection -   User: sa
+2025-08-28 13:58:03.857 [main] INFO  com.thesis.xesimporter.DatabaseConnection -   Password: (leave blank)
+2025-08-28 13:58:03.857 [main] INFO  com.thesis.xesimporter.DatabaseConnection -   NOTE: Web console will only work when this application is NOT connected to the database
+2025-08-28 13:58:03.857 [main] INFO  com.thesis.xesimporter.DatabaseConnection - H2 database connection test successful
+2025-08-28 13:59:17.072 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Found XES file: 14.xes (1532 MB)
+2025-08-28 13:59:23.832 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Successfully connected to H2 database: jdbc:h2:./FinalDB;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH
+2025-08-28 13:59:23.832 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Clearing existing data...
+2025-08-28 13:59:23.832 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Clearing existing data from database...
+2025-08-28 13:59:23.840 [main] ERROR com.thesis.xesimporter.DatabaseConnection - Error clearing existing data
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "event_has_attribute" not found (this database is empty); SQL statement:
+DELETE FROM event_has_attribute [42104-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.command.Parser.getTableOrViewNotFoundDbException(Parser.java:8051)
+	at org.h2.command.Parser.getTableOrViewNotFoundDbException(Parser.java:8035)
+	at org.h2.command.Parser.readTableOrView(Parser.java:8024)
+	at org.h2.command.Parser.readTableOrView(Parser.java:7990)
+	at org.h2.command.Parser.readSimpleTableFilter(Parser.java:1094)
+	at org.h2.command.Parser.parseDelete(Parser.java:1108)
+	at org.h2.command.Parser.parsePrepared(Parser.java:677)
+	at org.h2.command.Parser.parse(Parser.java:592)
+	at org.h2.command.Parser.parse(Parser.java:564)
+	at org.h2.command.Parser.prepareCommand(Parser.java:483)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:639)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:559)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1166)
+	at org.h2.jdbc.JdbcStatement.executeUpdateInternal(JdbcStatement.java:190)
+	at org.h2.jdbc.JdbcStatement.executeUpdate(JdbcStatement.java:147)
+	at com.thesis.xesimporter.DatabaseConnection.clearExistingData(DatabaseConnection.java:154)
+	at com.thesis.xesimporter.OptimizedXESImporter.processXESFile(OptimizedXESImporter.java:139)
+	at com.thesis.xesimporter.OptimizedXESImporter.run(OptimizedXESImporter.java:54)
+	at com.thesis.xesimporter.OptimizedXESImporter.main(OptimizedXESImporter.java:19)
+2025-08-28 13:59:23.843 [main] ERROR com.thesis.xesimporter.OptimizedXESImporter - Error during XES import
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "event_has_attribute" not found (this database is empty); SQL statement:
+DELETE FROM event_has_attribute [42104-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.command.Parser.getTableOrViewNotFoundDbException(Parser.java:8051)
+	at org.h2.command.Parser.getTableOrViewNotFoundDbException(Parser.java:8035)
+	at org.h2.command.Parser.readTableOrView(Parser.java:8024)
+	at org.h2.command.Parser.readTableOrView(Parser.java:7990)
+	at org.h2.command.Parser.readSimpleTableFilter(Parser.java:1094)
+	at org.h2.command.Parser.parseDelete(Parser.java:1108)
+	at org.h2.command.Parser.parsePrepared(Parser.java:677)
+	at org.h2.command.Parser.parse(Parser.java:592)
+	at org.h2.command.Parser.parse(Parser.java:564)
+	at org.h2.command.Parser.prepareCommand(Parser.java:483)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:639)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:559)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1166)
+	at org.h2.jdbc.JdbcStatement.executeUpdateInternal(JdbcStatement.java:190)
+	at org.h2.jdbc.JdbcStatement.executeUpdate(JdbcStatement.java:147)
+	at com.thesis.xesimporter.DatabaseConnection.clearExistingData(DatabaseConnection.java:154)
+	at com.thesis.xesimporter.OptimizedXESImporter.processXESFile(OptimizedXESImporter.java:139)
+	at com.thesis.xesimporter.OptimizedXESImporter.run(OptimizedXESImporter.java:54)
+	at com.thesis.xesimporter.OptimizedXESImporter.main(OptimizedXESImporter.java:19)
+2025-08-28 14:04:21.322 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - === Optimized XES to H2 Database Importer ===
+2025-08-28 14:04:21.327 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Designed for large XES files with streaming processing and built-in performance monitoring
+2025-08-28 14:04:21.328 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Testing H2 database connection...
+2025-08-28 14:04:21.557 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Successfully connected to H2 database: jdbc:h2:./FinalDB;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH
+2025-08-28 14:04:21.559 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Creating database tables if they don't exist...
+2025-08-28 14:04:21.604 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Database tables created successfully
+2025-08-28 14:04:21.623 [main] INFO  com.thesis.xesimporter.DatabaseConnection - H2 Web Console started at: http://localhost:8084
+2025-08-28 14:04:21.623 [main] INFO  com.thesis.xesimporter.DatabaseConnection -   JDBC URL: jdbc:h2:./FinalDB;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH
+2025-08-28 14:04:21.623 [main] INFO  com.thesis.xesimporter.DatabaseConnection -   User: sa
+2025-08-28 14:04:21.624 [main] INFO  com.thesis.xesimporter.DatabaseConnection -   Password: (leave blank)
+2025-08-28 14:04:21.624 [main] INFO  com.thesis.xesimporter.DatabaseConnection -   NOTE: Web console will only work when this application is NOT connected to the database
+2025-08-28 14:04:21.624 [main] INFO  com.thesis.xesimporter.DatabaseConnection - H2 database connection test successful
+2025-08-28 14:04:27.676 [main] ERROR com.thesis.xesimporter.OptimizedXESImporter - File not found: package com.thesis.xesimporter;
+2025-08-28 14:04:51.258 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Found XES file: 14.xes (1532 MB)
+2025-08-28 14:05:08.037 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Successfully connected to H2 database: jdbc:h2:./FinalDB;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH
+2025-08-28 14:05:08.037 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Creating database tables if they don't exist...
+2025-08-28 14:05:08.039 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Database tables created successfully
+2025-08-28 14:05:08.039 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Clearing existing data...
+2025-08-28 14:05:08.039 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Clearing existing data from database...
+2025-08-28 14:05:08.040 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Successfully cleared all existing data
+2025-08-28 14:05:08.046 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Prepared statements initialized for H2 Database
+2025-08-28 14:05:08.046 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Starting streaming import of XES file: 14.xes
+2025-08-28 14:05:08.047 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Starting streaming parse of XES file: 14.xes (1532 MB)
+2025-08-28 14:05:08.055 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Created log with ID: 1 and name: Unnamed Log
+2025-08-28 14:05:09.492 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 1000 traces, 4595 events
+2025-08-28 14:05:09.492 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 1000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:10.265 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 2000 traces, 8695 events
+2025-08-28 14:05:10.265 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 2000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:11.107 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 3000 traces, 13137 events
+2025-08-28 14:05:11.107 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 3000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:11.979 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 4000 traces, 17692 events
+2025-08-28 14:05:11.980 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 4000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:12.691 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 5000 traces, 22037 events
+2025-08-28 14:05:12.691 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 5000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:13.602 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 6000 traces, 26761 events
+2025-08-28 14:05:13.602 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 6000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:14.325 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 7000 traces, 31356 events
+2025-08-28 14:05:14.325 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 7000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:15.112 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 8000 traces, 35922 events
+2025-08-28 14:05:15.112 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 8000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:15.878 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 9000 traces, 40516 events
+2025-08-28 14:05:15.878 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 9000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:16.594 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 10000 traces, 44806 events
+2025-08-28 14:05:16.594 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 10000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:17.353 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 11000 traces, 49234 events
+2025-08-28 14:05:17.354 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 11000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:18.152 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 12000 traces, 53791 events
+2025-08-28 14:05:18.153 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 12000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:18.969 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 13000 traces, 58380 events
+2025-08-28 14:05:18.969 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 13000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:19.736 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 14000 traces, 62976 events
+2025-08-28 14:05:19.737 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 14000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:20.529 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 15000 traces, 67489 events
+2025-08-28 14:05:20.529 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 15000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:21.290 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 16000 traces, 72044 events
+2025-08-28 14:05:21.291 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 16000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:21.946 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 17000 traces, 75966 events
+2025-08-28 14:05:21.946 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 17000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:22.684 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 18000 traces, 80235 events
+2025-08-28 14:05:22.684 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 18000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:23.453 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 19000 traces, 84730 events
+2025-08-28 14:05:23.454 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 19000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:24.250 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 20000 traces, 89483 events
+2025-08-28 14:05:24.250 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 20000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:25.030 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 21000 traces, 94149 events
+2025-08-28 14:05:25.030 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 21000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:25.817 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 22000 traces, 98719 events
+2025-08-28 14:05:25.818 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 22000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:26.607 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 23000 traces, 103414 events
+2025-08-28 14:05:26.608 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 23000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:27.357 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 24000 traces, 107688 events
+2025-08-28 14:05:27.357 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 24000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:28.197 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 25000 traces, 112681 events
+2025-08-28 14:05:28.197 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 25000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:28.913 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 26000 traces, 116826 events
+2025-08-28 14:05:28.914 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 26000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:29.636 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 27000 traces, 121149 events
+2025-08-28 14:05:29.636 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 27000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:30.437 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 28000 traces, 125832 events
+2025-08-28 14:05:30.437 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 28000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:31.249 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 29000 traces, 130556 events
+2025-08-28 14:05:31.249 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 29000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:32.011 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 30000 traces, 135068 events
+2025-08-28 14:05:32.011 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 30000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:32.778 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 31000 traces, 139469 events
+2025-08-28 14:05:32.778 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 31000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:33.595 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 32000 traces, 144143 events
+2025-08-28 14:05:33.595 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 32000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:34.394 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 33000 traces, 148554 events
+2025-08-28 14:05:34.394 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 33000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:35.182 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 34000 traces, 153080 events
+2025-08-28 14:05:35.182 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 34000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:36.014 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 35000 traces, 157719 events
+2025-08-28 14:05:36.014 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 35000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:36.783 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 36000 traces, 162266 events
+2025-08-28 14:05:36.783 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 36000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:37.563 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 37000 traces, 166734 events
+2025-08-28 14:05:37.563 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 37000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:38.271 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 38000 traces, 170936 events
+2025-08-28 14:05:38.271 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 38000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:39.049 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 39000 traces, 175455 events
+2025-08-28 14:05:39.049 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 39000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:39.894 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 40000 traces, 180183 events
+2025-08-28 14:05:39.894 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 40000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:40.668 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 41000 traces, 184674 events
+2025-08-28 14:05:40.668 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 41000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:41.426 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 42000 traces, 189027 events
+2025-08-28 14:05:41.426 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 42000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:42.230 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 43000 traces, 193596 events
+2025-08-28 14:05:42.230 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 43000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:43.031 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 44000 traces, 198245 events
+2025-08-28 14:05:43.031 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 44000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:43.762 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 45000 traces, 202484 events
+2025-08-28 14:05:43.762 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 45000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:44.619 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 46000 traces, 207355 events
+2025-08-28 14:05:44.619 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 46000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:45.393 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 47000 traces, 211842 events
+2025-08-28 14:05:45.393 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 47000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:46.144 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 48000 traces, 216318 events
+2025-08-28 14:05:46.144 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 48000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:46.985 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 49000 traces, 220893 events
+2025-08-28 14:05:46.985 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 49000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:47.775 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 50000 traces, 225475 events
+2025-08-28 14:05:47.775 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 50000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:48.521 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 51000 traces, 229592 events
+2025-08-28 14:05:48.521 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 51000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:49.288 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 52000 traces, 234094 events
+2025-08-28 14:05:49.288 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 52000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:50.074 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 53000 traces, 238571 events
+2025-08-28 14:05:50.074 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 53000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:50.843 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 54000 traces, 243134 events
+2025-08-28 14:05:50.843 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 54000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:51.575 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 55000 traces, 247170 events
+2025-08-28 14:05:51.575 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 55000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:52.318 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 56000 traces, 251476 events
+2025-08-28 14:05:52.318 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 56000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:53.116 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 57000 traces, 256025 events
+2025-08-28 14:05:53.116 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 57000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:53.983 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 58000 traces, 260799 events
+2025-08-28 14:05:53.983 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 58000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:54.738 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 59000 traces, 265135 events
+2025-08-28 14:05:54.738 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 59000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:55.556 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 60000 traces, 269708 events
+2025-08-28 14:05:55.556 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 60000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:56.356 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 61000 traces, 274252 events
+2025-08-28 14:05:56.356 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 61000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:57.177 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 62000 traces, 278849 events
+2025-08-28 14:05:57.177 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 62000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:57.885 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 63000 traces, 282928 events
+2025-08-28 14:05:57.885 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 63000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:58.681 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 64000 traces, 287422 events
+2025-08-28 14:05:58.681 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 64000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:05:59.503 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 65000 traces, 292147 events
+2025-08-28 14:05:59.503 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 65000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:00.337 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 66000 traces, 296703 events
+2025-08-28 14:06:00.337 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 66000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:01.171 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 67000 traces, 301308 events
+2025-08-28 14:06:01.171 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 67000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:02.013 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 68000 traces, 306107 events
+2025-08-28 14:06:02.013 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 68000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:02.808 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 69000 traces, 310791 events
+2025-08-28 14:06:02.808 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 69000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:03.557 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 70000 traces, 315046 events
+2025-08-28 14:06:03.557 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 70000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:04.310 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 71000 traces, 319470 events
+2025-08-28 14:06:04.310 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 71000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:05.125 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 72000 traces, 324177 events
+2025-08-28 14:06:05.125 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 72000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:05.953 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 73000 traces, 328856 events
+2025-08-28 14:06:05.953 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 73000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:06.735 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 74000 traces, 333317 events
+2025-08-28 14:06:06.736 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 74000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:07.549 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 75000 traces, 337988 events
+2025-08-28 14:06:07.550 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 75000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:08.302 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 76000 traces, 342427 events
+2025-08-28 14:06:08.302 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 76000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:09.084 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 77000 traces, 346888 events
+2025-08-28 14:06:09.084 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 77000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:09.910 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 78000 traces, 351406 events
+2025-08-28 14:06:09.910 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 78000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:10.784 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 79000 traces, 356019 events
+2025-08-28 14:06:10.784 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 79000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:11.582 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 80000 traces, 360532 events
+2025-08-28 14:06:11.582 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 80000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:12.372 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 81000 traces, 365038 events
+2025-08-28 14:06:12.372 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 81000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:13.162 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 82000 traces, 369631 events
+2025-08-28 14:06:13.163 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 82000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:13.937 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 83000 traces, 373953 events
+2025-08-28 14:06:13.937 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 83000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:14.735 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 84000 traces, 378445 events
+2025-08-28 14:06:14.735 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 84000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:15.528 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 85000 traces, 382960 events
+2025-08-28 14:06:15.528 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 85000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:16.334 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 86000 traces, 387662 events
+2025-08-28 14:06:16.334 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 86000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:17.137 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 87000 traces, 392213 events
+2025-08-28 14:06:17.137 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 87000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:17.931 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 88000 traces, 396814 events
+2025-08-28 14:06:17.931 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 88000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:18.735 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 89000 traces, 401351 events
+2025-08-28 14:06:18.736 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 89000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:19.469 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 90000 traces, 405434 events
+2025-08-28 14:06:19.469 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 90000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:20.268 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 91000 traces, 410050 events
+2025-08-28 14:06:20.268 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 91000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:21.026 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 92000 traces, 414408 events
+2025-08-28 14:06:21.026 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 92000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:21.819 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 93000 traces, 418940 events
+2025-08-28 14:06:21.820 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 93000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:22.600 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 94000 traces, 423441 events
+2025-08-28 14:06:22.600 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 94000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:23.357 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 95000 traces, 427810 events
+2025-08-28 14:06:23.357 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 95000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:24.150 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 96000 traces, 432244 events
+2025-08-28 14:06:24.150 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 96000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:24.968 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 97000 traces, 436888 events
+2025-08-28 14:06:24.969 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 97000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:25.760 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 98000 traces, 441430 events
+2025-08-28 14:06:25.761 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 98000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:26.535 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 99000 traces, 446028 events
+2025-08-28 14:06:26.535 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 99000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:27.302 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 100000 traces, 450406 events
+2025-08-28 14:06:27.303 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 100000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:28.032 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 101000 traces, 454726 events
+2025-08-28 14:06:28.032 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 101000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:28.789 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 102000 traces, 459134 events
+2025-08-28 14:06:28.789 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 102000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:29.539 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 103000 traces, 463591 events
+2025-08-28 14:06:29.539 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 103000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:30.331 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 104000 traces, 468232 events
+2025-08-28 14:06:30.332 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 104000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:31.102 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 105000 traces, 472699 events
+2025-08-28 14:06:31.102 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 105000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:31.869 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 106000 traces, 477106 events
+2025-08-28 14:06:31.870 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 106000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:32.615 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 107000 traces, 481490 events
+2025-08-28 14:06:32.616 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 107000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:33.412 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 108000 traces, 486106 events
+2025-08-28 14:06:33.412 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 108000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:34.153 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 109000 traces, 490483 events
+2025-08-28 14:06:34.153 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 109000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:34.922 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 110000 traces, 494975 events
+2025-08-28 14:06:34.922 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 110000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:35.705 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 111000 traces, 499515 events
+2025-08-28 14:06:35.705 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 111000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:36.503 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 112000 traces, 504087 events
+2025-08-28 14:06:36.503 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 112000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:37.281 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 113000 traces, 508721 events
+2025-08-28 14:06:37.282 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 113000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:38.084 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 114000 traces, 513317 events
+2025-08-28 14:06:38.084 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 114000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:38.869 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 115000 traces, 517884 events
+2025-08-28 14:06:38.869 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 115000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:39.665 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 116000 traces, 522417 events
+2025-08-28 14:06:39.665 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 116000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:40.379 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 117000 traces, 526597 events
+2025-08-28 14:06:40.380 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 117000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:41.180 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 118000 traces, 531136 events
+2025-08-28 14:06:41.180 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 118000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:41.955 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 119000 traces, 535664 events
+2025-08-28 14:06:41.956 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 119000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:42.733 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 120000 traces, 540213 events
+2025-08-28 14:06:42.733 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 120000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:43.493 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 121000 traces, 544656 events
+2025-08-28 14:06:43.493 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 121000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:44.307 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 122000 traces, 549304 events
+2025-08-28 14:06:44.307 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 122000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:45.102 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 123000 traces, 553826 events
+2025-08-28 14:06:45.102 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 123000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:45.890 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 124000 traces, 558328 events
+2025-08-28 14:06:45.890 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 124000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:46.675 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 125000 traces, 562947 events
+2025-08-28 14:06:46.675 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 125000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:47.480 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 126000 traces, 567367 events
+2025-08-28 14:06:47.480 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 126000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:48.292 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 127000 traces, 571958 events
+2025-08-28 14:06:48.292 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 127000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:49.060 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 128000 traces, 576316 events
+2025-08-28 14:06:49.061 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 128000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:49.867 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 129000 traces, 581049 events
+2025-08-28 14:06:49.867 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 129000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:50.621 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 130000 traces, 585025 events
+2025-08-28 14:06:50.621 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 130000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:51.418 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 131000 traces, 589566 events
+2025-08-28 14:06:51.418 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 131000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:52.166 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 132000 traces, 593865 events
+2025-08-28 14:06:52.166 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 132000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:53.024 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 133000 traces, 598330 events
+2025-08-28 14:06:53.024 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 133000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:54.032 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 134000 traces, 602988 events
+2025-08-28 14:06:54.032 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 134000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:54.965 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 135000 traces, 607296 events
+2025-08-28 14:06:54.965 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 135000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:55.938 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 136000 traces, 611802 events
+2025-08-28 14:06:55.938 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 136000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:56.881 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 137000 traces, 616339 events
+2025-08-28 14:06:56.882 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 137000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:57.815 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 138000 traces, 620792 events
+2025-08-28 14:06:57.815 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 138000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:58.706 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 139000 traces, 625196 events
+2025-08-28 14:06:58.706 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 139000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:06:59.627 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 140000 traces, 629355 events
+2025-08-28 14:06:59.628 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 140000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:00.592 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 141000 traces, 633768 events
+2025-08-28 14:07:00.592 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 141000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:01.503 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 142000 traces, 638143 events
+2025-08-28 14:07:01.503 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 142000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:02.395 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 143000 traces, 642525 events
+2025-08-28 14:07:02.396 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 143000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:03.397 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 144000 traces, 647051 events
+2025-08-28 14:07:03.397 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 144000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:04.352 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 145000 traces, 651272 events
+2025-08-28 14:07:04.353 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 145000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:05.311 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 146000 traces, 655500 events
+2025-08-28 14:07:05.311 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 146000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:06.244 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 147000 traces, 659840 events
+2025-08-28 14:07:06.244 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 147000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:07.187 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 148000 traces, 664367 events
+2025-08-28 14:07:07.188 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 148000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:08.230 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 149000 traces, 669211 events
+2025-08-28 14:07:08.230 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 149000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:09.189 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 150000 traces, 673757 events
+2025-08-28 14:07:09.189 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 150000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:10.166 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 151000 traces, 678175 events
+2025-08-28 14:07:10.166 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 151000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:11.115 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 152000 traces, 682615 events
+2025-08-28 14:07:11.115 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 152000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:12.064 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 153000 traces, 686953 events
+2025-08-28 14:07:12.065 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 153000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:12.947 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 154000 traces, 691315 events
+2025-08-28 14:07:12.947 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 154000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:13.867 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 155000 traces, 695345 events
+2025-08-28 14:07:13.867 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 155000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:14.893 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 156000 traces, 700231 events
+2025-08-28 14:07:14.894 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 156000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:15.849 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 157000 traces, 704574 events
+2025-08-28 14:07:15.849 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 157000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:16.816 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 158000 traces, 709246 events
+2025-08-28 14:07:16.816 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 158000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:17.782 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 159000 traces, 713625 events
+2025-08-28 14:07:17.782 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 159000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:18.826 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 160000 traces, 718459 events
+2025-08-28 14:07:18.826 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 160000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:19.950 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 161000 traces, 723415 events
+2025-08-28 14:07:19.950 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 161000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:21.058 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 162000 traces, 728547 events
+2025-08-28 14:07:21.058 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 162000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:22.127 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 163000 traces, 733594 events
+2025-08-28 14:07:22.127 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 163000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:23.050 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 164000 traces, 738081 events
+2025-08-28 14:07:23.050 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 164000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:24.121 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 165000 traces, 743000 events
+2025-08-28 14:07:24.121 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 165000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:25.144 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 166000 traces, 747874 events
+2025-08-28 14:07:25.144 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 166000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:26.178 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 167000 traces, 752616 events
+2025-08-28 14:07:26.178 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 167000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:27.239 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 168000 traces, 757425 events
+2025-08-28 14:07:27.239 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 168000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:28.338 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 169000 traces, 762356 events
+2025-08-28 14:07:28.338 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 169000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:29.361 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 170000 traces, 767138 events
+2025-08-28 14:07:29.361 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 170000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:30.455 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 171000 traces, 772274 events
+2025-08-28 14:07:30.455 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 171000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:31.435 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 172000 traces, 777072 events
+2025-08-28 14:07:31.435 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 172000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:32.488 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 173000 traces, 781994 events
+2025-08-28 14:07:32.488 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 173000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:33.523 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 174000 traces, 786633 events
+2025-08-28 14:07:33.523 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 174000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:34.587 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 175000 traces, 791484 events
+2025-08-28 14:07:34.587 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 175000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:35.566 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 176000 traces, 796042 events
+2025-08-28 14:07:35.566 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 176000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:36.651 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 177000 traces, 800785 events
+2025-08-28 14:07:36.651 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 177000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:37.737 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 178000 traces, 805561 events
+2025-08-28 14:07:37.737 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 178000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:38.736 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 179000 traces, 810153 events
+2025-08-28 14:07:38.736 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 179000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:39.841 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 180000 traces, 815159 events
+2025-08-28 14:07:39.841 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 180000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:40.855 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 181000 traces, 819617 events
+2025-08-28 14:07:40.855 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 181000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:41.932 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 182000 traces, 824511 events
+2025-08-28 14:07:41.932 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 182000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:43.016 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 183000 traces, 829353 events
+2025-08-28 14:07:43.016 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 183000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:44.052 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 184000 traces, 834146 events
+2025-08-28 14:07:44.052 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 184000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:45.085 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 185000 traces, 838818 events
+2025-08-28 14:07:45.085 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 185000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:46.148 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 186000 traces, 843558 events
+2025-08-28 14:07:46.148 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 186000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:47.113 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 187000 traces, 848131 events
+2025-08-28 14:07:47.113 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 187000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:48.165 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 188000 traces, 852806 events
+2025-08-28 14:07:48.165 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 188000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:49.253 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 189000 traces, 857330 events
+2025-08-28 14:07:49.253 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 189000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:50.322 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 190000 traces, 861658 events
+2025-08-28 14:07:50.322 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 190000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:51.322 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 191000 traces, 866206 events
+2025-08-28 14:07:51.322 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 191000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:52.510 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 192000 traces, 870739 events
+2025-08-28 14:07:52.510 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 192000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:53.653 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 193000 traces, 875194 events
+2025-08-28 14:07:53.654 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 193000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:54.688 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 194000 traces, 879633 events
+2025-08-28 14:07:54.688 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 194000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:55.645 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 195000 traces, 883741 events
+2025-08-28 14:07:55.645 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 195000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:56.815 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 196000 traces, 888543 events
+2025-08-28 14:07:56.815 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 196000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:57.834 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 197000 traces, 892812 events
+2025-08-28 14:07:57.834 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 197000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:58.717 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 198000 traces, 896895 events
+2025-08-28 14:07:58.717 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 198000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:07:59.685 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 199000 traces, 901294 events
+2025-08-28 14:07:59.685 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 199000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:08:00.627 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 200000 traces, 905607 events
+2025-08-28 14:08:00.627 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 200000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:08:01.550 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 201000 traces, 909715 events
+2025-08-28 14:08:01.550 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 201000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:08:02.542 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 202000 traces, 914014 events
+2025-08-28 14:08:02.542 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 202000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:08:03.565 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 203000 traces, 918443 events
+2025-08-28 14:08:03.565 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 203000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:08:04.584 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 204000 traces, 922460 events
+2025-08-28 14:08:04.584 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 204000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:08:05.464 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 205000 traces, 926188 events
+2025-08-28 14:08:05.464 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 205000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:08:06.399 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 206000 traces, 930341 events
+2025-08-28 14:08:06.399 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 206000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:08:07.255 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 207000 traces, 934217 events
+2025-08-28 14:08:07.255 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 207000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:08:08.188 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 208000 traces, 938433 events
+2025-08-28 14:08:08.188 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 208000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:08:09.009 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 209000 traces, 942296 events
+2025-08-28 14:08:09.010 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 209000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:08:09.803 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 210000 traces, 945858 events
+2025-08-28 14:08:09.803 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 210000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:08:10.813 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 211000 traces, 949948 events
+2025-08-28 14:08:10.813 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 211000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:08:11.736 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 212000 traces, 953541 events
+2025-08-28 14:08:11.736 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 212000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:08:12.454 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 213000 traces, 956471 events
+2025-08-28 14:08:12.454 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 213000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:08:13.213 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 214000 traces, 959835 events
+2025-08-28 14:08:13.213 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 214000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:08:13.955 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 215000 traces, 963005 events
+2025-08-28 14:08:13.955 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 215000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:08:14.606 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 216000 traces, 965713 events
+2025-08-28 14:08:14.606 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 216000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:08:15.316 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 217000 traces, 968660 events
+2025-08-28 14:08:15.316 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 217000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:08:16.084 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 218000 traces, 972081 events
+2025-08-28 14:08:16.084 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 218000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:08:16.767 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 219000 traces, 975135 events
+2025-08-28 14:08:16.767 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 219000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:08:17.330 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 220000 traces, 977462 events
+2025-08-28 14:08:17.330 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 220000 traces (rate: {:.1f} traces/sec)
+2025-08-28 14:12:35.301 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processing completed: 220810 traces, 979942 events
+2025-08-28 14:12:35.301 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - H2 Web Console: http://localhost:8083 (JDBC URL: jdbc:h2:./FinalDB)
+2025-08-28 14:12:35.301 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Completed streaming parse: 220810 traces in {:.2f} seconds
+2025-08-28 14:12:35.301 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Streaming import completed in {:.2f} seconds
+2025-08-28 14:12:35.301 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - BatchXESProcessor closed successfully
+2025-08-28 14:12:35.301 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Database connection closed
+2025-08-28 14:12:35.301 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Web console is now accessible - database is no longer locked by this application
+2025-08-28 14:12:35.301 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Database connection closed - you can now access the web console
+2025-08-28 14:12:35.301 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Database connection closed - you can now access the web console
+2025-08-28 14:12:35.332 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Successfully connected to H2 database: jdbc:h2:./FinalDB;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH
+2025-08-28 14:12:35.332 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Creating database tables if they don't exist...
+2025-08-28 14:12:35.335 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Database tables created successfully
+2025-08-28 14:12:47.229 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Database connection closed
+2025-08-28 14:12:47.229 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Web console is now accessible - database is no longer locked by this application
+2025-08-29 12:56:15.436 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - === Optimized XES to H2 Database Importer ===
+2025-08-29 12:56:15.441 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Designed for large XES files with streaming processing and built-in performance monitoring
+2025-08-29 12:56:15.442 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Testing H2 database connection...
+2025-08-29 12:56:15.494 [main] WARN  com.thesis.xesimporter.DatabaseConnection - Could not start H2 web console on port 8082: Exception opening port "8082" (port may be in use), cause: "java.net.BindException: Address already in use: NET_Bind" [90061-224]
+2025-08-29 12:56:15.495 [main] INFO  com.thesis.xesimporter.DatabaseConnection - You can still access the database manually when the program is not running
+2025-08-29 12:56:15.908 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Successfully connected to H2 database: jdbc:h2:./FinalDB;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH;AUTO_SERVER=TRUE;AUTO_SERVER_PORT=9090
+2025-08-29 12:56:15.909 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Web Console accessible at: http://localhost:8082
+2025-08-29 12:56:15.909 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Connection info: JDBC URL=jdbc:h2:./FinalDB, User=sa, Password=(blank)
+2025-08-29 12:56:15.909 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Creating database tables if they don't exist...
+2025-08-29 12:56:15.912 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Database tables created successfully
+2025-08-29 12:56:15.912 [main] INFO  com.thesis.xesimporter.DatabaseConnection - H2 database connection test successful
+2025-08-29 12:56:15.912 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Web Console: http://localhost:8082 (JDBC URL: jdbc:h2:./FinalDB, User: sa, Password: blank)
+2025-08-29 12:57:27.765 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Found XES file: 19.xes (7 MB)
+2025-08-29 12:57:39.349 [main] WARN  com.thesis.xesimporter.DatabaseConnection - Could not start H2 web console on port 8082: Exception opening port "8082" (port may be in use), cause: "java.net.BindException: Address already in use: NET_Bind" [90061-224]
+2025-08-29 12:57:39.349 [main] INFO  com.thesis.xesimporter.DatabaseConnection - You can still access the database manually when the program is not running
+2025-08-29 12:57:39.350 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Successfully connected to H2 database: jdbc:h2:./FinalDB;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH;AUTO_SERVER=TRUE;AUTO_SERVER_PORT=9090
+2025-08-29 12:57:39.350 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Web Console accessible at: http://localhost:8082
+2025-08-29 12:57:39.350 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Connection info: JDBC URL=jdbc:h2:./FinalDB, User=sa, Password=(blank)
+2025-08-29 12:57:39.350 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Creating database tables if they don't exist...
+2025-08-29 12:57:39.353 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Database tables created successfully
+2025-08-29 12:57:39.353 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Clearing existing data...
+2025-08-29 12:57:39.353 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Clearing existing data from database...
+2025-08-29 13:01:00.359 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - === Optimized XES to H2 Database Importer ===
+2025-08-29 13:01:00.363 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Designed for large XES files with streaming processing and built-in performance monitoring
+2025-08-29 13:01:00.364 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Testing H2 database connection...
+2025-08-29 13:01:00.417 [main] WARN  com.thesis.xesimporter.DatabaseConnection - Could not start H2 web console on port 8082: Exception opening port "8082" (port may be in use), cause: "java.net.BindException: Address already in use: NET_Bind" [90061-224]
+2025-08-29 13:01:00.419 [main] INFO  com.thesis.xesimporter.DatabaseConnection - You can still access the database manually when the program is not running
+2025-08-29 13:01:00.720 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Successfully connected to H2 database: jdbc:h2:./FinalDB;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH;AUTO_SERVER=TRUE;AUTO_SERVER_PORT=9090
+2025-08-29 13:01:00.720 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Web Console accessible at: http://localhost:8082
+2025-08-29 13:01:00.720 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Connection info: JDBC URL=jdbc:h2:./FinalDB, User=sa, Password=(blank)
+2025-08-29 13:01:00.720 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Creating database tables if they don't exist...
+2025-08-29 13:01:00.759 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Database tables created successfully
+2025-08-29 13:01:00.759 [main] INFO  com.thesis.xesimporter.DatabaseConnection - H2 database connection test successful
+2025-08-29 13:01:00.759 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Web Console: http://localhost:8082 (JDBC URL: jdbc:h2:./FinalDB, User: sa, Password: blank)
+2025-08-29 13:01:09.636 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Found XES file: 19.xes (7 MB)
+2025-08-29 13:01:12.803 [main] WARN  com.thesis.xesimporter.DatabaseConnection - Could not start H2 web console on port 8082: Exception opening port "8082" (port may be in use), cause: "java.net.BindException: Address already in use: NET_Bind" [90061-224]
+2025-08-29 13:01:12.803 [main] INFO  com.thesis.xesimporter.DatabaseConnection - You can still access the database manually when the program is not running
+2025-08-29 13:01:12.805 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Successfully connected to H2 database: jdbc:h2:./FinalDB;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH;AUTO_SERVER=TRUE;AUTO_SERVER_PORT=9090
+2025-08-29 13:01:12.805 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Web Console accessible at: http://localhost:8082
+2025-08-29 13:01:12.805 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Connection info: JDBC URL=jdbc:h2:./FinalDB, User=sa, Password=(blank)
+2025-08-29 13:01:12.805 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Creating database tables if they don't exist...
+2025-08-29 13:01:12.807 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Database tables created successfully
+2025-08-29 13:01:12.807 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Clearing existing data...
+2025-08-29 13:01:12.807 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Clearing existing data from database...
+2025-08-29 13:01:12.809 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Successfully cleared all existing data
+2025-08-29 13:01:12.813 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Prepared statements initialized for H2 Database
+2025-08-29 13:01:12.813 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Starting streaming import of XES file: 19.xes
+2025-08-29 13:01:12.815 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Starting streaming parse of XES file: 19.xes (7 MB)
+2025-08-29 13:01:12.820 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Created log with ID: 1 and name: Unnamed Log
+2025-08-29 13:01:14.115 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 1000 traces, 8520 events
+2025-08-29 13:01:14.115 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 1000 traces (rate: {:.1f} traces/sec)
+2025-08-29 13:01:14.882 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 2000 traces, 17523 events
+2025-08-29 13:01:14.883 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 2000 traces (rate: {:.1f} traces/sec)
+2025-08-29 13:01:15.903 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processing completed: 2099 traces, 18246 events
+2025-08-29 13:01:15.904 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - H2 Web Console: http://localhost:8083 (JDBC URL: jdbc:h2:./FinalDB)
+2025-08-29 13:01:15.904 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Completed streaming parse: 2099 traces in {:.2f} seconds
+2025-08-29 13:01:15.904 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Streaming import completed in {:.2f} seconds
+2025-08-29 13:01:15.904 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - BatchXESProcessor closed successfully
+2025-08-29 13:01:15.904 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Database connection closed
+2025-08-29 13:01:15.904 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Web console remains accessible at: http://localhost:8082
+2025-08-29 13:01:15.904 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Database connection closed - you can now access the web console
+2025-08-29 13:01:15.904 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Database connection closed - you can now access the web console
+2025-08-29 13:01:15.906 [main] WARN  com.thesis.xesimporter.DatabaseConnection - Could not start H2 web console on port 8082: Exception opening port "8082" (port may be in use), cause: "java.net.BindException: Address already in use: NET_Bind" [90061-224]
+2025-08-29 13:01:15.906 [main] INFO  com.thesis.xesimporter.DatabaseConnection - You can still access the database manually when the program is not running
+2025-08-29 13:01:15.913 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Successfully connected to H2 database: jdbc:h2:./FinalDB;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH;AUTO_SERVER=TRUE;AUTO_SERVER_PORT=9090
+2025-08-29 13:01:15.913 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Web Console accessible at: http://localhost:8082
+2025-08-29 13:01:15.913 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Connection info: JDBC URL=jdbc:h2:./FinalDB, User=sa, Password=(blank)
+2025-08-29 13:01:15.913 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Creating database tables if they don't exist...
+2025-08-29 13:01:15.915 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Database tables created successfully
+2025-08-29 13:01:16.470 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Database connection closed
+2025-08-29 13:01:16.470 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Web console remains accessible at: http://localhost:8082
+2025-08-29 13:04:05.368 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - === Optimized XES to H2 Database Importer ===
+2025-08-29 13:04:05.373 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Designed for large XES files with streaming processing and built-in performance monitoring
+2025-08-29 13:04:05.374 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Testing H2 database connection...
+2025-08-29 13:04:05.421 [main] WARN  com.thesis.xesimporter.DatabaseConnection - Could not start H2 web console on port 8082: Exception opening port "8082" (port may be in use), cause: "java.net.BindException: Address already in use: NET_Bind" [90061-224]
+2025-08-29 13:04:05.423 [main] INFO  com.thesis.xesimporter.DatabaseConnection - You can still access the database manually when the program is not running
+2025-08-29 13:04:05.723 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Successfully connected to H2 database: jdbc:h2:./FinalDB;AUTO_SERVER=TRUE;AUTO_SERVER_PORT=9090
+2025-08-29 13:04:05.723 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Web Console accessible at: http://localhost:8082
+2025-08-29 13:04:05.723 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Connection info: JDBC URL=jdbc:h2:./FinalDB, User=sa, Password=(blank)
+2025-08-29 13:04:05.723 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Creating database tables if they don't exist...
+2025-08-29 13:04:05.765 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Database tables created successfully
+2025-08-29 13:04:05.766 [main] INFO  com.thesis.xesimporter.DatabaseConnection - H2 database connection test successful
+2025-08-29 13:04:05.766 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Web Console: http://localhost:8082 (JDBC URL: jdbc:h2:./FinalDB, User: sa, Password: blank)
+2025-08-29 13:04:24.047 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Found XES file: 19.xes (7 MB)
+2025-08-29 13:04:29.077 [main] WARN  com.thesis.xesimporter.DatabaseConnection - Could not start H2 web console on port 8082: Exception opening port "8082" (port may be in use), cause: "java.net.BindException: Address already in use: NET_Bind" [90061-224]
+2025-08-29 13:04:29.077 [main] INFO  com.thesis.xesimporter.DatabaseConnection - You can still access the database manually when the program is not running
+2025-08-29 13:04:29.079 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Successfully connected to H2 database: jdbc:h2:./FinalDB;AUTO_SERVER=TRUE;AUTO_SERVER_PORT=9090
+2025-08-29 13:04:29.079 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Web Console accessible at: http://localhost:8082
+2025-08-29 13:04:29.079 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Connection info: JDBC URL=jdbc:h2:./FinalDB, User=sa, Password=(blank)
+2025-08-29 13:04:29.079 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Creating database tables if they don't exist...
+2025-08-29 13:04:29.082 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Database tables created successfully
+2025-08-29 13:04:29.082 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Clearing existing data...
+2025-08-29 13:04:29.082 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Clearing existing data from database...
+2025-08-29 13:04:29.083 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Successfully cleared all existing data
+2025-08-29 13:04:29.085 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Prepared statements initialized for H2 Database
+2025-08-29 13:04:29.085 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Starting streaming import of XES file: 19.xes
+2025-08-29 13:04:29.086 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Starting streaming parse of XES file: 19.xes (7 MB)
+2025-08-29 13:04:29.091 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Created log with ID: 1 and name: Unnamed Log
+2025-08-29 13:04:30.357 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 1000 traces, 8520 events
+2025-08-29 13:04:30.357 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 1000 traces (rate: {:.1f} traces/sec)
+2025-08-29 13:04:30.913 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 2000 traces, 17523 events
+2025-08-29 13:04:30.913 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 2000 traces (rate: {:.1f} traces/sec)
+2025-08-29 13:04:31.847 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processing completed: 2099 traces, 18246 events
+2025-08-29 13:04:31.847 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - H2 Web Console: http://localhost:8083 (JDBC URL: jdbc:h2:./FinalDB)
+2025-08-29 13:04:31.847 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Completed streaming parse: 2099 traces in {:.2f} seconds
+2025-08-29 13:04:31.847 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Streaming import completed in {:.2f} seconds
+2025-08-29 13:04:31.847 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - BatchXESProcessor closed successfully
+2025-08-29 13:04:31.848 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Database connection closed
+2025-08-29 13:04:31.848 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Web console remains accessible at: http://localhost:8082
+2025-08-29 13:04:31.848 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Database connection closed - you can now access the web console
+2025-08-29 13:04:31.848 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Database connection closed - you can now access the web console
+2025-08-29 13:04:31.849 [main] WARN  com.thesis.xesimporter.DatabaseConnection - Could not start H2 web console on port 8082: Exception opening port "8082" (port may be in use), cause: "java.net.BindException: Address already in use: NET_Bind" [90061-224]
+2025-08-29 13:04:31.850 [main] INFO  com.thesis.xesimporter.DatabaseConnection - You can still access the database manually when the program is not running
+2025-08-29 13:04:31.856 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Successfully connected to H2 database: jdbc:h2:./FinalDB;AUTO_SERVER=TRUE;AUTO_SERVER_PORT=9090
+2025-08-29 13:04:31.856 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Web Console accessible at: http://localhost:8082
+2025-08-29 13:04:31.856 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Connection info: JDBC URL=jdbc:h2:./FinalDB, User=sa, Password=(blank)
+2025-08-29 13:04:31.856 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Creating database tables if they don't exist...
+2025-08-29 13:04:31.859 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Database tables created successfully
+2025-08-29 13:04:32.381 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Database connection closed
+2025-08-29 13:04:32.381 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Web console remains accessible at: http://localhost:8082
+2025-09-18 14:46:07.177 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - === Optimized XES to PostgreSQL Importer ===
+2025-09-18 14:46:07.182 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Designed for large XES files with streaming processing and batch operations
+2025-09-18 14:46:07.183 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Testing database connection...
+2025-09-18 14:46:07.612 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Successfully connected to database: jdbc:postgresql://localhost:5432/FinalDB
+2025-09-18 14:46:07.614 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Database connection test successful
+2025-09-18 14:47:24.212 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Found XES file: 2.xes (4 MB)
+2025-09-18 14:47:34.802 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Successfully connected to database: jdbc:postgresql://localhost:5432/FinalDB
+2025-09-18 14:47:34.802 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Clearing existing data...
+2025-09-18 14:47:34.802 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Clearing existing data from database...
+2025-09-18 15:38:46.217 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - === Optimized XES to PostgreSQL Importer ===
+2025-09-18 15:38:46.223 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Designed for large XES files with streaming processing and batch operations
+2025-09-18 15:38:46.224 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Testing database connection...
+2025-09-18 15:38:46.793 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Successfully connected to database: jdbc:postgresql://localhost:5432/FinalDB
+2025-09-18 15:38:46.794 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Database connection test successful
+2025-09-18 15:38:59.114 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Found XES file: 2.xes (4 MB)
+2025-09-18 15:39:06.636 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Successfully connected to database: jdbc:postgresql://localhost:5432/FinalDB
+2025-09-18 15:39:06.636 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Clearing existing data...
+2025-09-18 15:39:06.637 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Clearing existing data from database...
+2025-09-19 13:12:29.323 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - === XES to PostgreSQL Importer ===
+2025-09-19 13:12:29.786 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Successfully connected to database: jdbc:postgresql://localhost:5432/FinalDB
+2025-09-19 13:12:29.788 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Database connection test successful
+2025-09-19 13:12:55.226 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Successfully connected to database: jdbc:postgresql://localhost:5432/FinalDB
+2025-09-19 13:12:55.227 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Dropping and recreating database tables...
+2025-09-19 13:12:55.264 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Recreating database schema...
+2025-09-19 13:12:55.330 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Database schema recreation completed
+2025-09-19 13:12:55.365 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Successfully recreated all tables
+2025-09-19 13:12:55.371 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Database sequences created successfully
+2025-09-19 13:12:55.382 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Starting import of XES file: 2.xes
+2025-09-19 13:12:55.383 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Starting streaming parse of XES file: 2.xes (4 MB)
+2025-09-19 13:12:55.391 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Created log with ID: 5 and name: Unnamed Log
+2025-09-19 13:12:55.407 [main] ERROR com.thesis.xesimporter.BatchXESProcessor - Error processing global attributes
+java.sql.BatchUpdateException: Batch entry 0 INSERT INTO log_has_attribute (log_id, trace_global, event_global, attr_id, value) VALUES (5, 'TRUE', 'FALSE', 233, 'UNKNOWN') was aborted: ERROR: duplicate key value violates unique constraint "log_has_attribute_pk"
+  Detail: Key (log_id, trace_global, event_global, attr_id)=(5, t, f, 233) already exists.  Call getNextException to see other errors in the batch.
+	at org.postgresql.jdbc.BatchResultHandler.handleError(BatchResultHandler.java:165)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2401)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:573)
+	at org.postgresql.jdbc.PgStatement.internalExecuteBatch(PgStatement.java:896)
+	at org.postgresql.jdbc.PgStatement.executeBatch(PgStatement.java:919)
+	at org.postgresql.jdbc.PgPreparedStatement.executeBatch(PgPreparedStatement.java:1677)
+	at com.thesis.xesimporter.BatchXESProcessor.onGlobalAttributes(BatchXESProcessor.java:191)
+	at com.thesis.xesimporter.StreamingXESParser.parseXESFileStreaming(StreamingXESParser.java:95)
+	at com.thesis.xesimporter.OptimizedXESImporter.processXESFile(OptimizedXESImporter.java:108)
+	at com.thesis.xesimporter.OptimizedXESImporter.run(OptimizedXESImporter.java:47)
+	at com.thesis.xesimporter.OptimizedXESImporter.main(OptimizedXESImporter.java:18)
+Caused by: org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "log_has_attribute_pk"
+  Detail: Key (log_id, trace_global, event_global, attr_id)=(5, t, f, 233) already exists.
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2712)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2400)
+	... 9 common frames omitted
+2025-09-19 13:12:55.409 [main] ERROR com.thesis.xesimporter.OptimizedXESImporter - Error during import
+java.lang.RuntimeException: java.sql.BatchUpdateException: Batch entry 0 INSERT INTO log_has_attribute (log_id, trace_global, event_global, attr_id, value) VALUES (5, 'TRUE', 'FALSE', 233, 'UNKNOWN') was aborted: ERROR: duplicate key value violates unique constraint "log_has_attribute_pk"
+  Detail: Key (log_id, trace_global, event_global, attr_id)=(5, t, f, 233) already exists.  Call getNextException to see other errors in the batch.
+	at com.thesis.xesimporter.BatchXESProcessor.onGlobalAttributes(BatchXESProcessor.java:195)
+	at com.thesis.xesimporter.StreamingXESParser.parseXESFileStreaming(StreamingXESParser.java:95)
+	at com.thesis.xesimporter.OptimizedXESImporter.processXESFile(OptimizedXESImporter.java:108)
+	at com.thesis.xesimporter.OptimizedXESImporter.run(OptimizedXESImporter.java:47)
+	at com.thesis.xesimporter.OptimizedXESImporter.main(OptimizedXESImporter.java:18)
+Caused by: java.sql.BatchUpdateException: Batch entry 0 INSERT INTO log_has_attribute (log_id, trace_global, event_global, attr_id, value) VALUES (5, 'TRUE', 'FALSE', 233, 'UNKNOWN') was aborted: ERROR: duplicate key value violates unique constraint "log_has_attribute_pk"
+  Detail: Key (log_id, trace_global, event_global, attr_id)=(5, t, f, 233) already exists.  Call getNextException to see other errors in the batch.
+	at org.postgresql.jdbc.BatchResultHandler.handleError(BatchResultHandler.java:165)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2401)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:573)
+	at org.postgresql.jdbc.PgStatement.internalExecuteBatch(PgStatement.java:896)
+	at org.postgresql.jdbc.PgStatement.executeBatch(PgStatement.java:919)
+	at org.postgresql.jdbc.PgPreparedStatement.executeBatch(PgPreparedStatement.java:1677)
+	at com.thesis.xesimporter.BatchXESProcessor.onGlobalAttributes(BatchXESProcessor.java:191)
+	... 4 common frames omitted
+Caused by: org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "log_has_attribute_pk"
+  Detail: Key (log_id, trace_global, event_global, attr_id)=(5, t, f, 233) already exists.
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2712)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2400)
+	... 9 common frames omitted
+2025-09-19 13:15:30.588 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - === XES to PostgreSQL Importer ===
+2025-09-19 13:15:30.992 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Successfully connected to database: jdbc:postgresql://localhost:5432/FinalDB
+2025-09-19 13:15:30.993 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Database connection test successful
+2025-09-19 13:15:48.717 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - === XES to PostgreSQL Importer ===
+2025-09-19 13:15:49.102 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Successfully connected to database: jdbc:postgresql://localhost:5432/FinalDB
+2025-09-19 13:15:49.103 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Database connection test successful
+2025-09-19 13:16:08.741 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Successfully connected to database: jdbc:postgresql://localhost:5432/FinalDB
+2025-09-19 13:16:08.742 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Dropping and recreating database tables...
+2025-09-19 13:16:08.757 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Recreating database schema...
+2025-09-19 13:16:08.810 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Database schema recreation completed
+2025-09-19 13:16:08.823 [main] INFO  com.thesis.xesimporter.DatabaseConnection - Successfully recreated all tables
+2025-09-19 13:16:08.831 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Database sequences created successfully
+2025-09-19 13:16:08.840 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Starting import of XES file: 2.xes
+2025-09-19 13:16:08.841 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Starting streaming parse of XES file: 2.xes (4 MB)
+2025-09-19 13:16:08.847 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Created log with ID: 6 and name: Unnamed Log
+2025-09-19 13:16:11.632 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processed 1000 traces, 4843 events
+2025-09-19 13:16:11.633 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Processed 1000 traces (rate: {:.1f} traces/sec)
+2025-09-19 13:16:12.639 [main] INFO  com.thesis.xesimporter.BatchXESProcessor - Processing completed: 1487 traces, 6660 events
+2025-09-19 13:16:12.639 [main] INFO  com.thesis.xesimporter.StreamingXESParser - Completed streaming parse: 1487 traces in {:.2f} seconds
+2025-09-19 13:16:12.639 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - Import completed in {:.2f} seconds
+2025-09-19 13:16:12.681 [main] INFO  com.thesis.xesimporter.OptimizedXESImporter - XES import completed successfully

@@ -1,0 +1,949 @@
+2025-08-29 13:04:31.852668+03:00 jdbc[5]: null
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-224]
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.message.DbException.get(DbException.java:188)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:218)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:135)
+	at org.h2.Driver.connect(Driver.java:59)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at com.thesis.xesimporter.DatabaseConnection.connect(DatabaseConnection.java:38)
+	at com.thesis.xesimporter.OptimizedXESImporter.processXESFile(OptimizedXESImporter.java:181)
+	at com.thesis.xesimporter.OptimizedXESImporter.run(OptimizedXESImporter.java:54)
+	at com.thesis.xesimporter.OptimizedXESImporter.main(OptimizedXESImporter.java:19)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: The connection was not closed by the application and is garbage collected [90018-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:690)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	... 12 more
+2025-08-29 13:04:32.003750+03:00 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "FILES" not found; SQL statement:
+SELECT SUM(FILE_SIZE) as total_size FROM INFORMATION_SCHEMA.FILES [42102-224]
+2025-08-29 13:04:53.738345+03:00 database: wrong user or password; user: "SA"
+org.h2.message.DbException: Wrong user name or password [28000-232]
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.message.DbException.get(DbException.java:188)
+	at org.h2.engine.Engine.openSession(Engine.java:154)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:344)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:124)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:291)
+	at org.h2.server.web.WebServer.getConnection(WebServer.java:811)
+	at org.h2.server.web.WebApp.test(WebApp.java:977)
+	at org.h2.server.web.WebApp.process(WebApp.java:241)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:176)
+	at org.h2.server.web.WebThread.process(WebThread.java:154)
+	at org.h2.server.web.WebThread.run(WebThread.java:103)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLInvalidAuthorizationSpecException: Wrong user name or password [28000-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:522)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	... 16 more
+2025-08-29 13:04:54.668404+03:00 database: wrong user or password; user: "SA"
+org.h2.message.DbException: Wrong user name or password [28000-232]
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.message.DbException.get(DbException.java:188)
+	at org.h2.engine.Engine.openSession(Engine.java:154)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:344)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:124)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:291)
+	at org.h2.server.web.WebServer.getConnection(WebServer.java:811)
+	at org.h2.server.web.WebApp.test(WebApp.java:977)
+	at org.h2.server.web.WebApp.process(WebApp.java:241)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:176)
+	at org.h2.server.web.WebThread.process(WebThread.java:154)
+	at org.h2.server.web.WebThread.run(WebThread.java:103)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLInvalidAuthorizationSpecException: Wrong user name or password [28000-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:522)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	... 16 more
+2025-08-29 13:04:54.825876+03:00 database: wrong user or password; user: "SA"
+org.h2.message.DbException: Wrong user name or password [28000-232]
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.message.DbException.get(DbException.java:188)
+	at org.h2.engine.Engine.openSession(Engine.java:154)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:344)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:124)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:291)
+	at org.h2.server.web.WebServer.getConnection(WebServer.java:811)
+	at org.h2.server.web.WebApp.test(WebApp.java:977)
+	at org.h2.server.web.WebApp.process(WebApp.java:241)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:176)
+	at org.h2.server.web.WebThread.process(WebThread.java:154)
+	at org.h2.server.web.WebThread.run(WebThread.java:103)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLInvalidAuthorizationSpecException: Wrong user name or password [28000-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:522)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	... 16 more
+2025-08-29 13:04:55.282405+03:00 database: wrong user or password; user: "SA"
+org.h2.message.DbException: Wrong user name or password [28000-232]
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.message.DbException.get(DbException.java:188)
+	at org.h2.engine.Engine.openSession(Engine.java:154)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:344)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:124)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:291)
+	at org.h2.server.web.WebServer.getConnection(WebServer.java:811)
+	at org.h2.server.web.WebApp.test(WebApp.java:977)
+	at org.h2.server.web.WebApp.process(WebApp.java:241)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:176)
+	at org.h2.server.web.WebThread.process(WebThread.java:154)
+	at org.h2.server.web.WebThread.run(WebThread.java:103)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLInvalidAuthorizationSpecException: Wrong user name or password [28000-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:522)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	... 16 more
+2025-08-29 13:05:11.229955+03:00 database: wrong user or password; user: "SA"
+org.h2.message.DbException: Wrong user name or password [28000-232]
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.message.DbException.get(DbException.java:188)
+	at org.h2.engine.Engine.openSession(Engine.java:154)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:344)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:124)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:291)
+	at org.h2.server.web.WebServer.getConnection(WebServer.java:811)
+	at org.h2.server.web.WebApp.login(WebApp.java:1038)
+	at org.h2.server.web.WebApp.process(WebApp.java:226)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:176)
+	at org.h2.server.web.WebThread.process(WebThread.java:154)
+	at org.h2.server.web.WebThread.run(WebThread.java:103)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLInvalidAuthorizationSpecException: Wrong user name or password [28000-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:522)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	... 16 more
+2025-08-29 13:08:57.776368+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE VIEW process_log AS \000d\000aSELECT \000d\000a    e.id as EventID,\000d\000a    lht.trace_id as TraceID, \000d\000a    eha_concept.[*]value as Task,\000d\000a    CAST(eha_time.value AS TIMESTAMP) as Time,\000d\000a    COALESCE(eha_resource.value, 'unknown') as Identity\000d\000aFROM event e \000d\000aJOIN trace_has_event the ON e.id = the.event_id\000d\000aJOIN log_has_trace lht ON the.trace_id = lht.trace_id \000d\000aJOIN event_has_attribute eha_concept ON e.id = eha_concept.event_id\000d\000aJOIN attribute a_concept ON eha_concept.attr_id = a_concept.id\000d\000aLEFT JOIN event_has_attribute eha_time ON e.id = eha_time.event_id\000d\000aLEFT JOIN attribute a_time ON eha_time.attr_id = a_time.id  \000d\000aLEFT JOIN event_has_attribute eha_resource ON e.id = eha_resource.event_id\000d\000aLEFT JOIN attribute a_resource ON eha_resource.attr_id = a_resource.id\000d\000aWHERE a_concept.""key"" = 'concept:name'\000d\000a  AND (a_time.""key"" = 'time:timestamp' OR a_time.""key"" IS NULL)\000d\000a  AND (a_resource.""key"" = 'org:resource' OR a_resource.""key"" IS NULL)\000d\000aORDER BY lht.trace_id, CAST(eha_time.value AS TIMESTAMP)"; expected "identifier"; SQL statement:
+CREATE VIEW process_log AS 
+SELECT 
+    e.id as EventID,
+    lht.trace_id as TraceID, 
+    eha_concept.value as Task,
+    CAST(eha_time.value AS TIMESTAMP) as Time,
+    COALESCE(eha_resource.value, 'unknown') as Identity
+FROM event e 
+JOIN trace_has_event the ON e.id = the.event_id
+JOIN log_has_trace lht ON the.trace_id = lht.trace_id 
+JOIN event_has_attribute eha_concept ON e.id = eha_concept.event_id
+JOIN attribute a_concept ON eha_concept.attr_id = a_concept.id
+LEFT JOIN event_has_attribute eha_time ON e.id = eha_time.event_id
+LEFT JOIN attribute a_time ON eha_time.attr_id = a_time.id  
+LEFT JOIN event_has_attribute eha_resource ON e.id = eha_resource.event_id
+LEFT JOIN attribute a_resource ON eha_resource.attr_id = a_resource.id
+WHERE a_concept."key" = 'concept:name'
+  AND (a_time."key" = 'time:timestamp' OR a_time."key" IS NULL)
+  AND (a_resource."key" = 'org:resource' OR a_resource."key" IS NULL)
+ORDER BY lht.trace_id, CAST(eha_time.value AS TIMESTAMP) [42001-232]
+2025-08-29 13:30:57.888559+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLFeatureNotSupportedException: Feature not supported: "Window function"; SQL statement:
+-- Check time differences between any two activities
+SELECT TraceID, 
+       LAG(Task) OVER (PARTITION BY TraceID ORDER BY Time) as prev_activity,
+       Task as current_activity,
+       DATEDIFF('MINUTE', LAG(Time) OVER (PARTITION BY TraceID ORDER BY Time), Time) as time_diff
+FROM process_log 
+WHERE LAG(Task) OVER (PARTITION BY TraceID ORDER  [50100-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:568)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.message.DbException.getUnsupportedException(DbException.java:287)
+	at org.h2.expression.analysis.WindowFunction.getAggregatedValue(WindowFunction.java:417)
+	at org.h2.expression.analysis.DataAnalysisOperation.getWindowResult(DataAnalysisOperation.java:424)
+	at org.h2.expression.analysis.DataAnalysisOperation.getValue(DataAnalysisOperation.java:394)
+	at org.h2.expression.condition.NullPredicate.getValue(NullPredicate.java:83)
+	at org.h2.expression.Expression.getBooleanValue(Expression.java:343)
+	at org.h2.command.query.Select.isConditionMet(Select.java:452)
+	at org.h2.command.query.Select.gatherGroup(Select.java:522)
+	at org.h2.command.query.Select.queryWindow(Select.java:458)
+	at org.h2.command.query.Select.queryWithoutCache(Select.java:880)
+	at org.h2.command.query.Query.queryWithoutCacheLazyCheck(Query.java:211)
+	at org.h2.command.query.Query.query(Query.java:517)
+	at org.h2.command.query.Query.query(Query.java:498)
+	at org.h2.command.CommandContainer.query(CommandContainer.java:222)
+	at org.h2.command.Command.executeQuery(Command.java:196)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:257)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1344)
+	at org.h2.server.web.WebApp.query(WebApp.java:1142)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1108)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1095)
+	at org.h2.server.web.WebThread.process(WebThread.java:190)
+	at org.h2.server.web.WebThread.run(WebThread.java:103)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2025-08-29 13:51:32.695965+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "-- Schönig-style SQL Queries with Dynamic Activity Mapping\000d\000a-- Generated from rules file\000d\000a-- Using process_log view and automatic activity discovery\000d\000a-- No manual replacement needed - fully automated!\000d\000a\000d\000a-- Query 1: 1 3 MAX 1000\000d\000aWITH activity_mapping AS (\000d\000a    WITH first_occurrence AS (\000d\000a        SELECT eha_activity.[*]value as activity_name,\000d\000a               MIN(CAST(eha_time.value AS TIMESTAMP)) as first_timestamp\000d\000a        FROM event_has_attribute eha_activity\000d\000a        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity.key = 'concept:name'\000d\000a        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id\000d\000a        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time.key = 'time:timestamp'\000d\000a        GROUP BY eha_activity.value\000d\000a    )\000d\000a    SELECT ROW_NUMBER() OVER (ORDER BY first_timestamp) as activity_id,\000d\000a           activity_name,\000d\000a           first_timestamp\000d\000a    FROM first_occurrence\000d\000a    ORDER BY first_timestamp\000d\000a    LIMIT 4\000d\000a)\000d\000aSELECT 'Q1_Response_<EQ' as query_id, a.TraceID, a.EventID as source_event_id,\000d\000a       (SELECT b.EventID FROM process_log b \000d\000a        JOIN activity_mapping am_target ON am_target.activity_id = 3\000d\000a        WHERE b.Task = am_target.activity_name\000d\000a        AND b.TraceID = a.TraceID AND b.Time > a.Time \000d\000a        AND DATEDIFF('MINUTE', a.Time, b.Time) <= 1000 \000d\000a        ORDER BY b.Time LIMIT 1) as target_event_id,\000d\000a       DATEDIFF('MINUTE', a.Time, \000d\000a                (SELECT b.Time FROM process_log b \000d\000a                 JOIN activity_mapping am_target ON am_target.activity_id = 3\000d\000a                 WHERE b.Task = am_target.activity_name\000d\000a                 AND b.TraceID = a.TraceID AND b.Time > a.Time \000d\000a                 AND DATEDIFF('MINUTE', a.Time, b.Time) <= 1000 \000d\000a                 ORDER BY b.Time LIMIT 1)) as time_diff\000d\000aFROM process_log a\000d\000aJOIN activity_mapping am_source ON am_source.activity_id = 1\000d\000aWHERE a.Task = am_source.activity_name\000d\000a  AND EXISTS (SELECT 1 FROM process_log b \000d\000a              JOIN activity_mapping am_target ON am_target.activity_id = 3\000d\000a              WHERE b.Task = am_target.activity_name AND b.TraceID = a.TraceID \000d\000a              AND b.Time > a.Time \000d\000a              AND DATEDIFF('MINUTE', a.Time, b.Time) <= 1000)\000d\000aORDER BY a.TraceID, a.Time"; expected "identifier"; SQL statement:
+-- Schönig-style SQL Queries with Dynamic Activity Mapping
+-- Generated from rules file
+-- Using process_log view and automatic activity discovery
+-- No manual replacement needed - fully automated!
+
+-- Query 1: 1 3 MAX 1000
+WITH activity_mapping AS (
+    WITH first_occurrence AS (
+        SELECT eha_activity.value as activity_name,
+               MIN(CAST(eha_time.value AS TIMESTAMP)) as first_timestamp
+        FROM event_has_attribute eha_activity
+        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity.key = 'concept:name'
+        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id
+        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time.key = 'time:timestamp'
+        GROUP BY eha_activity.value
+    )
+    SELECT ROW_NUMBER() OVER (ORDER BY first_timestamp) as activity_id,
+           activity_name,
+           first_timestamp
+    FROM first_occurrence
+    ORDER BY first_timestamp
+    LIMIT 4
+)
+SELECT 'Q1_Response_<EQ' as query_id, a.TraceID, a.EventID as source_event_id,
+       (SELECT b.EventID FROM process_log b 
+        JOIN activity_mapping am_target ON am_target.activity_id = 3
+        WHERE b.Task = am_target.activity_name
+        AND b.TraceID = a.TraceID AND b.Time > a.Time 
+        AND DATEDIFF('MINUTE', a.Time, b.Time) <= 1000 
+        ORDER BY b.Time LIMIT 1) as target_event_id,
+       DATEDIFF('MINUTE', a.Time, 
+                (SELECT b.Time FROM process_log b 
+                 JOIN activity_mapping am_target ON am_target.activity_id = 3
+                 WHERE b.Task = am_target.activity_name
+                 AND b.TraceID = a.TraceID AND b.Time > a.Time 
+                 AND DATEDIFF('MINUTE', a.Time, b.Time) <= 1000 
+                 ORDER BY b.Time LIMIT 1)) as time_diff
+FROM process_log a
+JOIN activity_mapping am_source ON am_source.activity_id = 1
+WHERE a.Task = am_source.activity_name
+  AND EXISTS (SELECT 1 FROM process_log b 
+              JOIN activity_mapping am_target ON am_target.activity_id = 3
+              WHERE b.Task = am_target.activity_name AND b.TraceID = a.TraceID 
+              AND b.Time > a.Time 
+              AND DATEDIFF('MINUTE', a.Time, b.Time) <= 1000)
+ORDER BY a.TraceID, a.Time [42001-232]
+2025-08-29 13:51:32.698170+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "-- Query 2: 1 3 MIN 15000\000d\000aWITH activity_mapping AS (\000d\000a    WITH first_occurrence AS (\000d\000a        SELECT eha_activity.[*]value as activity_name,\000d\000a               MIN(CAST(eha_time.value AS TIMESTAMP)) as first_timestamp\000d\000a        FROM event_has_attribute eha_activity\000d\000a        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity.key = 'concept:name'\000d\000a        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id\000d\000a        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time.key = 'time:timestamp'\000d\000a        GROUP BY eha_activity.value\000d\000a    )\000d\000a    SELECT ROW_NUMBER() OVER (ORDER BY first_timestamp) as activity_id,\000d\000a           activity_name,\000d\000a           first_timestamp\000d\000a    FROM first_occurrence\000d\000a    ORDER BY first_timestamp\000d\000a    LIMIT 4\000d\000a)\000d\000aSELECT 'Q2_Response_>EQ' as query_id, a.TraceID, a.EventID as source_event_id,\000d\000a       (SELECT b.EventID FROM process_log b \000d\000a        JOIN activity_mapping am_target ON am_target.activity_id = 3\000d\000a        WHERE b.Task = am_target.activity_name\000d\000a        AND b.TraceID = a.TraceID AND b.Time > a.Time \000d\000a        AND DATEDIFF('MINUTE', a.Time, b.Time) >= 15000 \000d\000a        ORDER BY b.Time LIMIT 1) as target_event_id,\000d\000a       DATEDIFF('MINUTE', a.Time, \000d\000a                (SELECT b.Time FROM process_log b \000d\000a                 JOIN activity_mapping am_target ON am_target.activity_id = 3\000d\000a                 WHERE b.Task = am_target.activity_name\000d\000a                 AND b.TraceID = a.TraceID AND b.Time > a.Time \000d\000a                 AND DATEDIFF('MINUTE', a.Time, b.Time) >= 15000 \000d\000a                 ORDER BY b.Time LIMIT 1)) as time_diff\000d\000aFROM process_log a\000d\000aJOIN activity_mapping am_source ON am_source.activity_id = 1\000d\000aWHERE a.Task = am_source.activity_name\000d\000a  AND EXISTS (SELECT 1 FROM process_log b \000d\000a              JOIN activity_mapping am_target ON am_target.activity_id = 3\000d\000a              WHERE b.Task = am_target.activity_name AND b.TraceID = a.TraceID \000d\000a              AND b.Time > a.Time \000d\000a              AND DATEDIFF('MINUTE', a.Time, b.Time) >= 15000)\000d\000aORDER BY a.TraceID, a.Time"; expected "identifier"; SQL statement:
+-- Query 2: 1 3 MIN 15000
+WITH activity_mapping AS (
+    WITH first_occurrence AS (
+        SELECT eha_activity.value as activity_name,
+               MIN(CAST(eha_time.value AS TIMESTAMP)) as first_timestamp
+        FROM event_has_attribute eha_activity
+        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity.key = 'concept:name'
+        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id
+        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time.key = 'time:timestamp'
+        GROUP BY eha_activity.value
+    )
+    SELECT ROW_NUMBER() OVER (ORDER BY first_timestamp) as activity_id,
+           activity_name,
+           first_timestamp
+    FROM first_occurrence
+    ORDER BY first_timestamp
+    LIMIT 4
+)
+SELECT 'Q2_Response_>EQ' as query_id, a.TraceID, a.EventID as source_event_id,
+       (SELECT b.EventID FROM process_log b 
+        JOIN activity_mapping am_target ON am_target.activity_id = 3
+        WHERE b.Task = am_target.activity_name
+        AND b.TraceID = a.TraceID AND b.Time > a.Time 
+        AND DATEDIFF('MINUTE', a.Time, b.Time) >= 15000 
+        ORDER BY b.Time LIMIT 1) as target_event_id,
+       DATEDIFF('MINUTE', a.Time, 
+                (SELECT b.Time FROM process_log b 
+                 JOIN activity_mapping am_target ON am_target.activity_id = 3
+                 WHERE b.Task = am_target.activity_name
+                 AND b.TraceID = a.TraceID AND b.Time > a.Time 
+                 AND DATEDIFF('MINUTE', a.Time, b.Time) >= 15000 
+                 ORDER BY b.Time LIMIT 1)) as time_diff
+FROM process_log a
+JOIN activity_mapping am_source ON am_source.activity_id = 1
+WHERE a.Task = am_source.activity_name
+  AND EXISTS (SELECT 1 FROM process_log b 
+              JOIN activity_mapping am_target ON am_target.activity_id = 3
+              WHERE b.Task = am_target.activity_name AND b.TraceID = a.TraceID 
+              AND b.Time > a.Time 
+              AND DATEDIFF('MINUTE', a.Time, b.Time) >= 15000)
+ORDER BY a.TraceID, a.Time [42001-232]
+2025-08-29 13:51:32.700590+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "-- Query 3: 2 4 EXACT 1880\000d\000aWITH activity_mapping AS (\000d\000a    WITH first_occurrence AS (\000d\000a        SELECT eha_activity.[*]value as activity_name,\000d\000a               MIN(CAST(eha_time.value AS TIMESTAMP)) as first_timestamp\000d\000a        FROM event_has_attribute eha_activity\000d\000a        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity.key = 'concept:name'\000d\000a        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id\000d\000a        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time.key = 'time:timestamp'\000d\000a        GROUP BY eha_activity.value\000d\000a    )\000d\000a    SELECT ROW_NUMBER() OVER (ORDER BY first_timestamp) as activity_id,\000d\000a           activity_name,\000d\000a           first_timestamp\000d\000a    FROM first_occurrence\000d\000a    ORDER BY first_timestamp\000d\000a    LIMIT 4\000d\000a)\000d\000aSELECT 'Q3_Response_EQ' as query_id, a.TraceID, a.EventID as source_event_id,\000d\000a       (SELECT b.EventID FROM process_log b \000d\000a        JOIN activity_mapping am_target ON am_target.activity_id = 4\000d\000a        WHERE b.Task = am_target.activity_name\000d\000a        AND b.TraceID = a.TraceID AND b.Time > a.Time \000d\000a        AND DATEDIFF('MINUTE', a.Time, b.Time) = 1880 \000d\000a        ORDER BY b.Time LIMIT 1) as target_event_id,\000d\000a       DATEDIFF('MINUTE', a.Time, \000d\000a                (SELECT b.Time FROM process_log b \000d\000a                 JOIN activity_mapping am_target ON am_target.activity_id = 4\000d\000a                 WHERE b.Task = am_target.activity_name\000d\000a                 AND b.TraceID = a.TraceID AND b.Time > a.Time \000d\000a                 AND DATEDIFF('MINUTE', a.Time, b.Time) = 1880 \000d\000a                 ORDER BY b.Time LIMIT 1)) as time_diff\000d\000aFROM process_log a\000d\000aJOIN activity_mapping am_source ON am_source.activity_id = 2\000d\000aWHERE a.Task = am_source.activity_name\000d\000a  AND EXISTS (SELECT 1 FROM process_log b \000d\000a              JOIN activity_mapping am_target ON am_target.activity_id = 4\000d\000a              WHERE b.Task = am_target.activity_name AND b.TraceID = a.TraceID \000d\000a              AND b.Time > a.Time \000d\000a              AND DATEDIFF('MINUTE', a.Time, b.Time) = 1880)\000d\000aORDER BY a.TraceID, a.Time"; expected "identifier"; SQL statement:
+-- Query 3: 2 4 EXACT 1880
+WITH activity_mapping AS (
+    WITH first_occurrence AS (
+        SELECT eha_activity.value as activity_name,
+               MIN(CAST(eha_time.value AS TIMESTAMP)) as first_timestamp
+        FROM event_has_attribute eha_activity
+        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity.key = 'concept:name'
+        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id
+        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time.key = 'time:timestamp'
+        GROUP BY eha_activity.value
+    )
+    SELECT ROW_NUMBER() OVER (ORDER BY first_timestamp) as activity_id,
+           activity_name,
+           first_timestamp
+    FROM first_occurrence
+    ORDER BY first_timestamp
+    LIMIT 4
+)
+SELECT 'Q3_Response_EQ' as query_id, a.TraceID, a.EventID as source_event_id,
+       (SELECT b.EventID FROM process_log b 
+        JOIN activity_mapping am_target ON am_target.activity_id = 4
+        WHERE b.Task = am_target.activity_name
+        AND b.TraceID = a.TraceID AND b.Time > a.Time 
+        AND DATEDIFF('MINUTE', a.Time, b.Time) = 1880 
+        ORDER BY b.Time LIMIT 1) as target_event_id,
+       DATEDIFF('MINUTE', a.Time, 
+                (SELECT b.Time FROM process_log b 
+                 JOIN activity_mapping am_target ON am_target.activity_id = 4
+                 WHERE b.Task = am_target.activity_name
+                 AND b.TraceID = a.TraceID AND b.Time > a.Time 
+                 AND DATEDIFF('MINUTE', a.Time, b.Time) = 1880 
+                 ORDER BY b.Time LIMIT 1)) as time_diff
+FROM process_log a
+JOIN activity_mapping am_source ON am_source.activity_id = 2
+WHERE a.Task = am_source.activity_name
+  AND EXISTS (SELECT 1 FROM process_log b 
+              JOIN activity_mapping am_target ON am_target.activity_id = 4
+              WHERE b.Task = am_target.activity_name AND b.TraceID = a.TraceID 
+              AND b.Time > a.Time 
+              AND DATEDIFF('MINUTE', a.Time, b.Time) = 1880)
+ORDER BY a.TraceID, a.Time [42001-232]
+2025-08-29 13:51:32.702791+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "-- Query 4: 2 3 MINS 13400\000d\000aWITH activity_mapping AS (\000d\000a    WITH first_occurrence AS (\000d\000a        SELECT eha_activity.[*]value as activity_name,\000d\000a               MIN(CAST(eha_time.value AS TIMESTAMP)) as first_timestamp\000d\000a        FROM event_has_attribute eha_activity\000d\000a        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity.key = 'concept:name'\000d\000a        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id\000d\000a        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time.key = 'time:timestamp'\000d\000a        GROUP BY eha_activity.value\000d\000a    )\000d\000a    SELECT ROW_NUMBER() OVER (ORDER BY first_timestamp) as activity_id,\000d\000a           activity_name,\000d\000a           first_timestamp\000d\000a    FROM first_occurrence\000d\000a    ORDER BY first_timestamp\000d\000a    LIMIT 4\000d\000a)\000d\000aSELECT 'Q4_Substitute_>EQ' as query_id, a.TraceID, \000d\000a       MIN(a.EventID) as first_target_event_id,\000d\000a       DATEDIFF('MINUTE', \000d\000a                (SELECT MIN(start_trace.Time) FROM process_log start_trace WHERE start_trace.TraceID = a.TraceID),\000d\000a                MIN(a.Time)) as time_from_start\000d\000aFROM process_log a\000d\000aJOIN activity_mapping am_target ON am_target.activity_id = 3\000d\000aWHERE a.Task = am_target.activity_name\000d\000a  AND NOT EXISTS (SELECT 1 FROM process_log source \000d\000a                  JOIN activity_mapping am_source ON am_source.activity_id = 2\000d\000a                  WHERE source.Task = am_source.activity_name AND source.TraceID = a.TraceID)\000d\000a  AND DATEDIFF('MINUTE', \000d\000a               (SELECT MIN(start_trace.Time) FROM process_log start_trace WHERE start_trace.TraceID = a.TraceID),\000d\000a               a.Time) >= 13400\000d\000aGROUP BY a.TraceID\000d\000aORDER BY a.TraceID"; expected "identifier"; SQL statement:
+-- Query 4: 2 3 MINS 13400
+WITH activity_mapping AS (
+    WITH first_occurrence AS (
+        SELECT eha_activity.value as activity_name,
+               MIN(CAST(eha_time.value AS TIMESTAMP)) as first_timestamp
+        FROM event_has_attribute eha_activity
+        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity.key = 'concept:name'
+        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id
+        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time.key = 'time:timestamp'
+        GROUP BY eha_activity.value
+    )
+    SELECT ROW_NUMBER() OVER (ORDER BY first_timestamp) as activity_id,
+           activity_name,
+           first_timestamp
+    FROM first_occurrence
+    ORDER BY first_timestamp
+    LIMIT 4
+)
+SELECT 'Q4_Substitute_>EQ' as query_id, a.TraceID, 
+       MIN(a.EventID) as first_target_event_id,
+       DATEDIFF('MINUTE', 
+                (SELECT MIN(start_trace.Time) FROM process_log start_trace WHERE start_trace.TraceID = a.TraceID),
+                MIN(a.Time)) as time_from_start
+FROM process_log a
+JOIN activity_mapping am_target ON am_target.activity_id = 3
+WHERE a.Task = am_target.activity_name
+  AND NOT EXISTS (SELECT 1 FROM process_log source 
+                  JOIN activity_mapping am_source ON am_source.activity_id = 2
+                  WHERE source.Task = am_source.activity_name AND source.TraceID = a.TraceID)
+  AND DATEDIFF('MINUTE', 
+               (SELECT MIN(start_trace.Time) FROM process_log start_trace WHERE start_trace.TraceID = a.TraceID),
+               a.Time) >= 13400
+GROUP BY a.TraceID
+ORDER BY a.TraceID [42001-232]
+2025-08-29 13:51:32.704098+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "-- Query 5: 1 2 MAXS 21300\000d\000aWITH activity_mapping AS (\000d\000a    WITH first_occurrence AS (\000d\000a        SELECT eha_activity.[*]value as activity_name,\000d\000a               MIN(CAST(eha_time.value AS TIMESTAMP)) as first_timestamp\000d\000a        FROM event_has_attribute eha_activity\000d\000a        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity.key = 'concept:name'\000d\000a        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id\000d\000a        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time.key = 'time:timestamp'\000d\000a        GROUP BY eha_activity.value\000d\000a    )\000d\000a    SELECT ROW_NUMBER() OVER (ORDER BY first_timestamp) as activity_id,\000d\000a           activity_name,\000d\000a           first_timestamp\000d\000a    FROM first_occurrence\000d\000a    ORDER BY first_timestamp\000d\000a    LIMIT 4\000d\000a)\000d\000aSELECT 'Q5_Substitute_<EQ' as query_id, a.TraceID, \000d\000a       MIN(a.EventID) as first_target_event_id,\000d\000a       DATEDIFF('MINUTE', \000d\000a                (SELECT MIN(start_trace.Time) FROM process_log start_trace WHERE start_trace.TraceID = a.TraceID),\000d\000a                MIN(a.Time)) as time_from_start\000d\000aFROM process_log a\000d\000aJOIN activity_mapping am_target ON am_target.activity_id = 2\000d\000aWHERE a.Task = am_target.activity_name\000d\000a  AND NOT EXISTS (SELECT 1 FROM process_log source \000d\000a                  JOIN activity_mapping am_source ON am_source.activity_id = 1\000d\000a                  WHERE source.Task = am_source.activity_name AND source.TraceID = a.TraceID)\000d\000a  AND DATEDIFF('MINUTE', \000d\000a               (SELECT MIN(start_trace.Time) FROM process_log start_trace WHERE start_trace.TraceID = a.TraceID),\000d\000a               a.Time) <= 21300\000d\000aGROUP BY a.TraceID\000d\000aORDER BY a.TraceID"; expected "identifier"; SQL statement:
+-- Query 5: 1 2 MAXS 21300
+WITH activity_mapping AS (
+    WITH first_occurrence AS (
+        SELECT eha_activity.value as activity_name,
+               MIN(CAST(eha_time.value AS TIMESTAMP)) as first_timestamp
+        FROM event_has_attribute eha_activity
+        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity.key = 'concept:name'
+        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id
+        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time.key = 'time:timestamp'
+        GROUP BY eha_activity.value
+    )
+    SELECT ROW_NUMBER() OVER (ORDER BY first_timestamp) as activity_id,
+           activity_name,
+           first_timestamp
+    FROM first_occurrence
+    ORDER BY first_timestamp
+    LIMIT 4
+)
+SELECT 'Q5_Substitute_<EQ' as query_id, a.TraceID, 
+       MIN(a.EventID) as first_target_event_id,
+       DATEDIFF('MINUTE', 
+                (SELECT MIN(start_trace.Time) FROM process_log start_trace WHERE start_trace.TraceID = a.TraceID),
+                MIN(a.Time)) as time_from_start
+FROM process_log a
+JOIN activity_mapping am_target ON am_target.activity_id = 2
+WHERE a.Task = am_target.activity_name
+  AND NOT EXISTS (SELECT 1 FROM process_log source 
+                  JOIN activity_mapping am_source ON am_source.activity_id = 1
+                  WHERE source.Task = am_source.activity_name AND source.TraceID = a.TraceID)
+  AND DATEDIFF('MINUTE', 
+               (SELECT MIN(start_trace.Time) FROM process_log start_trace WHERE start_trace.TraceID = a.TraceID),
+               a.Time) <= 21300
+GROUP BY a.TraceID
+ORDER BY a.TraceID [42001-232]
+2025-08-29 13:52:09.342042+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "WITH first_occurrence AS ( SELECT eha_activity.[*]value as activity_name, MIN(CAST(eha_time.value AS TIMESTAMP)) as first_timestamp FROM event_has_attribute eha_activity JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity.key = 'concept:name' JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time.key = 'time:timestamp' GROUP BY eha_activity.value ) SELECT ROW_NUMBER() OVER (ORDER BY first_timestamp) as activity_id, activity_name, first_timestamp FROM first_occurrence ORDER BY first_timestamp LIMIT 4"; expected "identifier"; SQL statement:
+WITH first_occurrence AS ( SELECT eha_activity.value as activity_name, MIN(CAST(eha_time.value AS TIMESTAMP)) as first_timestamp FROM event_has_attribute eha_activity JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity.key = 'concept:name' JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time.key = 'time:timestamp' GROUP BY eha_activity.value ) SELECT ROW_NUMBER() OVER (ORDER BY first_timestamp) as activity_id, activity_name, first_timestamp FROM first_occurrence ORDER BY first_timestamp LIMIT 4 [42001-232]
+2025-08-29 13:52:56.254339+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "-- H2-compatible version\000d\000aSELECT \000d\000a    activity_name,\000d\000a    first_timestamp,\000d\000a    ROW_NUMBER() OVER (ORDER BY first_timestamp) as activity_id\000d\000aFROM (\000d\000a    SELECT \000d\000a        eha_activity.[*]value as activity_name,\000d\000a        MIN(CAST(eha_time.value AS TIMESTAMP)) as first_timestamp\000d\000a    FROM event_has_attribute eha_activity\000d\000a    JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity.key = 'concept:name'\000d\000a    JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id\000d\000a    JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time.key = 'time:timestamp'\000d\000a    GROUP BY eha_activity.value\000d\000a) first_occurrence\000d\000aORDER BY first_timestamp\000d\000aLIMIT 4"; expected "identifier"; SQL statement:
+-- H2-compatible version
+SELECT 
+    activity_name,
+    first_timestamp,
+    ROW_NUMBER() OVER (ORDER BY first_timestamp) as activity_id
+FROM (
+    SELECT 
+        eha_activity.value as activity_name,
+        MIN(CAST(eha_time.value AS TIMESTAMP)) as first_timestamp
+    FROM event_has_attribute eha_activity
+    JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity.key = 'concept:name'
+    JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id
+    JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time.key = 'time:timestamp'
+    GROUP BY eha_activity.value
+) first_occurrence
+ORDER BY first_timestamp
+LIMIT 4 [42001-232]
+2025-08-29 13:53:21.061936+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT \000d\000a    activity_name,\000d\000a    first_timestamp,\000d\000a    ROW_NUMBER() OVER (ORDER BY first_timestamp) as activity_id\000d\000aFROM (\000d\000a    SELECT \000d\000a        eha_activity.[*]value as activity_name,\000d\000a        MIN(CAST(eha_time.value AS TIMESTAMP)) as first_timestamp\000d\000a    FROM event_has_attribute eha_activity\000d\000a    JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity.key = 'concept:name'\000d\000a    JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id\000d\000a    JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time.key = 'time:timestamp'\000d\000a    GROUP BY eha_activity.value\000d\000a) first_occurrence\000d\000aORDER BY first_timestamp\000d\000aLIMIT 4"; expected "identifier"; SQL statement:
+SELECT 
+    activity_name,
+    first_timestamp,
+    ROW_NUMBER() OVER (ORDER BY first_timestamp) as activity_id
+FROM (
+    SELECT 
+        eha_activity.value as activity_name,
+        MIN(CAST(eha_time.value AS TIMESTAMP)) as first_timestamp
+    FROM event_has_attribute eha_activity
+    JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity.key = 'concept:name'
+    JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id
+    JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time.key = 'time:timestamp'
+    GROUP BY eha_activity.value
+) first_occurrence
+ORDER BY first_timestamp
+LIMIT 4 [42001-232]
+2025-08-29 13:54:12.112565+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "-- H2-compatible version without ROW_NUMBER()\000d\000aSELECT \000d\000a    activity_name,\000d\000a    first_timestamp\000d\000aFROM (\000d\000a    SELECT \000d\000a        eha_activity.[*]value as activity_name,\000d\000a        MIN(CAST(eha_time.value AS TIMESTAMP)) as first_timestamp\000d\000a    FROM event_has_attribute eha_activity\000d\000a    JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity.key = 'concept:name'\000d\000a    JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id\000d\000a    JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time.key = 'time:timestamp'\000d\000a    GROUP BY eha_activity.value\000d\000a) first_occurrence\000d\000aORDER BY first_timestamp\000d\000aLIMIT 4"; expected "identifier"; SQL statement:
+-- H2-compatible version without ROW_NUMBER()
+SELECT 
+    activity_name,
+    first_timestamp
+FROM (
+    SELECT 
+        eha_activity.value as activity_name,
+        MIN(CAST(eha_time.value AS TIMESTAMP)) as first_timestamp
+    FROM event_has_attribute eha_activity
+    JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity.key = 'concept:name'
+    JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id
+    JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time.key = 'time:timestamp'
+    GROUP BY eha_activity.value
+) first_occurrence
+ORDER BY first_timestamp
+LIMIT 4 [42001-232]
+2025-08-29 13:54:24.159741+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT \000d\000a    activity_name,\000d\000a    first_timestamp\000d\000aFROM (\000d\000a    SELECT \000d\000a        eha_activity.[*]value as activity_name,\000d\000a        MIN(CAST(eha_time.value AS TIMESTAMP)) as first_timestamp\000d\000a    FROM event_has_attribute eha_activity\000d\000a    JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity.key = 'concept:name'\000d\000a    JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id\000d\000a    JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time.key = 'time:timestamp'\000d\000a    GROUP BY eha_activity.value\000d\000a) first_occurrence\000d\000aORDER BY first_timestamp\000d\000aLIMIT 4"; expected "identifier"; SQL statement:
+SELECT 
+    activity_name,
+    first_timestamp
+FROM (
+    SELECT 
+        eha_activity.value as activity_name,
+        MIN(CAST(eha_time.value AS TIMESTAMP)) as first_timestamp
+    FROM event_has_attribute eha_activity
+    JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity.key = 'concept:name'
+    JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id
+    JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time.key = 'time:timestamp'
+    GROUP BY eha_activity.value
+) first_occurrence
+ORDER BY first_timestamp
+LIMIT 4 [42001-232]
+2025-08-29 13:54:53.445432+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT \000d\000a    eha_activity.[*]value as activity_name,\000d\000a    MIN(CAST(eha_time.value AS TIMESTAMP)) as first_timestamp\000d\000aFROM event_has_attribute eha_activity\000d\000aJOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity.key = 'concept:name'\000d\000aJOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id\000d\000aJOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time.key = 'time:timestamp'\000d\000aGROUP BY eha_activity.value\000d\000aORDER BY MIN(CAST(eha_time.value AS TIMESTAMP))\000d\000aLIMIT 4"; expected "identifier"; SQL statement:
+SELECT 
+    eha_activity.value as activity_name,
+    MIN(CAST(eha_time.value AS TIMESTAMP)) as first_timestamp
+FROM event_has_attribute eha_activity
+JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity.key = 'concept:name'
+JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id
+JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time.key = 'time:timestamp'
+GROUP BY eha_activity.value
+ORDER BY MIN(CAST(eha_time.value AS TIMESTAMP))
+LIMIT 4 [42001-232]
+2025-08-29 14:00:23.593572+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "-- MATCH_RECOGNIZE SQL Queries with Dynamic Activity Mapping\000d\000a-- Generated from rules file\000d\000a-- Using process_log view and automatic activity discovery\000d\000a-- No manual replacement needed - fully automated!\000d\000a\000d\000a-- Query 1: 1 3 MAX 1000\000d\000aWITH activity_mapping AS (\000d\000a    SELECT 1 as activity_id, activity_name FROM (\000d\000a        SELECT eha_activity.""value"" as activity_name,\000d\000a               MIN(CAST(eha_time.""value"" AS TIMESTAMP)) as first_timestamp\000d\000a        FROM event_has_attribute eha_activity\000d\000a        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity.""key"" = 'concept:name'\000d\000a        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id\000d\000a        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time.""key"" = 'time:timestamp'\000d\000a        GROUP BY eha_activity.""value""\000d\000a        ORDER BY MIN(CAST(eha_time.""value"" AS TIMESTAMP))\000d\000a        LIMIT 1\000d\000a    ) first_activity\000d\000a    UNION ALL\000d\000a    SELECT 2 as activity_id, activity_name FROM (\000d\000a        SELECT eha_activity.""value"" as activity_name,\000d\000a               MIN(CAST(eha_time.""value"" AS TIMESTAMP)) as first_timestamp\000d\000a        FROM event_has_attribute eha_activity\000d\000a        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity.""key"" = 'concept:name'\000d\000a        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id\000d\000a        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time.""key"" = 'time:timestamp'\000d\000a        GROUP BY eha_activity.""value""\000d\000a        ORDER BY MIN(CAST(eha_time.""value"" AS TIMESTAMP))\000d\000a        LIMIT 1 OFFSET 1\000d\000a    ) second_activity\000d\000a    UNION ALL\000d\000a    SELECT 3 as activity_id, activity_name FROM (\000d\000a        SELECT eha_activity.""value"" as activity_name,\000d\000a               MIN(CAST(eha_time.""value"" AS TIMESTAMP)) as first_timestamp\000d\000a        FROM event_has_attribute eha_activity\000d\000a        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity.""key"" = 'concept:name'\000d\000a        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id\000d\000a        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time.""key"" = 'time:timestamp'\000d\000a        GROUP BY eha_activity.""value""\000d\000a        ORDER BY MIN(CAST(eha_time.""value"" AS TIMESTAMP))\000d\000a        LIMIT 1 OFFSET 2\000d\000a    ) third_activity\000d\000a    UNION ALL\000d\000a    SELECT 4 as activity_id, activity_name FROM (\000d\000a        SELECT eha_activity.""value"" as activity_name,\000d\000a               MIN(CAST(eha_time.""value"" AS TIMESTAMP)) as first_timestamp\000d\000a        FROM event_has_attribute eha_activity\000d\000a        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity.""key"" = 'concept:name'\000d\000a        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id\000d\000a        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time.""key"" = 'time:timestamp'\000d\000a        GROUP BY eha_activity.""value""\000d\000a        ORDER BY MIN(CAST(eha_time.""value"" AS TIMESTAMP))\000d\000a        LIMIT 1 OFFSET 3\000d\000a    ) fourth_activity\000d\000a)\000d\000aSELECT query_id, TraceID, source_event_id, target_event_id, time_diff_minutes\000d\000aFROM (\000d\000a    SELECT pl.TraceID, pl.EventID, pl.Task, pl.Time,\000d\000a           am_source.activity_name as source_activity,\000d\000a           am_target.activity_name as target_activity\000d\000a    FROM process_log pl\000d\000a    CROSS JOIN activity_mapping am_source\000d\000a    CROSS JOIN activity_mapping am_target\000d\000a    WHERE am_source.activity_id = 1 AND am_target.activity_id = 3\000d\000a) extended_log\000d\000a[*]MATCH_RECOGNIZE (\000d\000a  PARTITION BY TraceID\000d\000a  ORDER BY Time\000d\000a  MEASURES\000d\000a    'Q1_Response_<EQ' as query_id,\000d\000a    A.TraceID as TraceID,\000d\000a    A.EventID as source_event_id,\000d\000a    B.EventID as target_event_id,\000d\000a    DATEDIFF('MINUTE', A.Time, B.Time) as time_diff_minutes\000d\000a  PATTERN (A B)\000d\000a  DEFINE\000d\000a    A AS Task = source_activity,\000d\000a    B AS Task = target_activity AND DATEDIFF('MINUTE', A.Time, Time) <= 1000\000d\000a)"; SQL statement:
+-- MATCH_RECOGNIZE SQL Queries with Dynamic Activity Mapping
+-- Generated from rules file
+-- Using process_log view and automatic activity discovery
+-- No manual replacement needed - fully automated!
+
+-- Query 1: 1 3 MAX 1000
+WITH activity_mapping AS (
+    SELECT 1 as activity_id, activity_name FROM (
+        SELECT eha_activity."value" as activity_name,
+               MIN(CAST(eha_time."value" AS TIMESTAMP)) as first_timestamp
+        FROM event_has_attribute eha_activity
+        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity."key" = 'concept:name'
+        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id
+        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time."key" = 'time:timestamp'
+        GROUP BY eha_activity."value"
+        ORDER BY MIN(CAST(eha_time."value" AS TIMESTAMP))
+        LIMIT 1
+    ) first_activity
+    UNION ALL
+    SELECT 2 as activity_id, activity_name FROM (
+        SELECT eha_activity."value" as activity_name,
+               MIN(CAST(eha_time."value" AS TIMESTAMP)) as first_timestamp
+        FROM event_has_attribute eha_activity
+        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity."key" = 'concept:name'
+        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id
+        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time."key" = 'time:timestamp'
+        GROUP BY eha_activity."value"
+        ORDER BY MIN(CAST(eha_time."value" AS TIMESTAMP))
+        LIMIT 1 OFFSET 1
+    ) second_activity
+    UNION ALL
+    SELECT 3 as activity_id, activity_name FROM (
+        SELECT eha_activity."value" as activity_name,
+               MIN(CAST(eha_time."value" AS TIMESTAMP)) as first_timestamp
+        FROM event_has_attribute eha_activity
+        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity."key" = 'concept:name'
+        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id
+        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time."key" = 'time:timestamp'
+        GROUP BY eha_activity."value"
+        ORDER BY MIN(CAST(eha_time."value" AS TIMESTAMP))
+        LIMIT 1 OFFSET 2
+    ) third_activity
+    UNION ALL
+    SELECT 4 as activity_id, activity_name FROM (
+        SELECT eha_activity."value" as activity_name,
+               MIN(CAST(eha_time."value" AS TIMESTAMP)) as first_timestamp
+        FROM event_has_attribute eha_activity
+        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity."key" = 'concept:name'
+        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id
+        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time."key" = 'time:timestamp'
+        GROUP BY eha_activity."value"
+        ORDER BY MIN(CAST(eha_time."value" AS TIMESTAMP))
+        LIMIT 1 OFFSET 3
+    ) fourth_activity
+)
+SELECT query_id, TraceID, source_event_id, target_event_id, time_diff_minutes
+FROM (
+    SELECT pl.TraceID, pl.EventID, pl.Task, pl.Time,
+           am_source.activity_name as source_activity,
+           am_target.activity_name as target_activity
+    FROM process_log pl
+    CROSS JOIN activity_mapping am_source
+    CROSS JOIN activity_mapping am_target
+    WHERE am_source.activity_id = 1 AND am_target.activity_id = 3
+) extended_log
+MATCH_RECOGNIZE (
+  PARTITION BY TraceID
+  ORDER BY Time
+  MEASURES
+    'Q1_Response_<EQ' as query_id,
+    A.TraceID as TraceID,
+    A.EventID as source_event_id,
+    B.EventID as target_event_id,
+    DATEDIFF('MINUTE', A.Time, B.Time) as time_diff_minutes
+  PATTERN (A B)
+  DEFINE
+    A AS Task = source_activity,
+    B AS Task = target_activity AND DATEDIFF('MINUTE', A.Time, Time) <= 1000
+) [42000-232]
+2025-08-29 14:00:23.598512+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "-- Query 2: 1 3 MIN 15000\000d\000aWITH activity_mapping AS (\000d\000a    SELECT 1 as activity_id, activity_name FROM (\000d\000a        SELECT eha_activity.""value"" as activity_name,\000d\000a               MIN(CAST(eha_time.""value"" AS TIMESTAMP)) as first_timestamp\000d\000a        FROM event_has_attribute eha_activity\000d\000a        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity.""key"" = 'concept:name'\000d\000a        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id\000d\000a        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time.""key"" = 'time:timestamp'\000d\000a        GROUP BY eha_activity.""value""\000d\000a        ORDER BY MIN(CAST(eha_time.""value"" AS TIMESTAMP))\000d\000a        LIMIT 1\000d\000a    ) first_activity\000d\000a    UNION ALL\000d\000a    SELECT 2 as activity_id, activity_name FROM (\000d\000a        SELECT eha_activity.""value"" as activity_name,\000d\000a               MIN(CAST(eha_time.""value"" AS TIMESTAMP)) as first_timestamp\000d\000a        FROM event_has_attribute eha_activity\000d\000a        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity.""key"" = 'concept:name'\000d\000a        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id\000d\000a        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time.""key"" = 'time:timestamp'\000d\000a        GROUP BY eha_activity.""value""\000d\000a        ORDER BY MIN(CAST(eha_time.""value"" AS TIMESTAMP))\000d\000a        LIMIT 1 OFFSET 1\000d\000a    ) second_activity\000d\000a    UNION ALL\000d\000a    SELECT 3 as activity_id, activity_name FROM (\000d\000a        SELECT eha_activity.""value"" as activity_name,\000d\000a               MIN(CAST(eha_time.""value"" AS TIMESTAMP)) as first_timestamp\000d\000a        FROM event_has_attribute eha_activity\000d\000a        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity.""key"" = 'concept:name'\000d\000a        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id\000d\000a        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time.""key"" = 'time:timestamp'\000d\000a        GROUP BY eha_activity.""value""\000d\000a        ORDER BY MIN(CAST(eha_time.""value"" AS TIMESTAMP))\000d\000a        LIMIT 1 OFFSET 2\000d\000a    ) third_activity\000d\000a    UNION ALL\000d\000a    SELECT 4 as activity_id, activity_name FROM (\000d\000a        SELECT eha_activity.""value"" as activity_name,\000d\000a               MIN(CAST(eha_time.""value"" AS TIMESTAMP)) as first_timestamp\000d\000a        FROM event_has_attribute eha_activity\000d\000a        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity.""key"" = 'concept:name'\000d\000a        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id\000d\000a        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time.""key"" = 'time:timestamp'\000d\000a        GROUP BY eha_activity.""value""\000d\000a        ORDER BY MIN(CAST(eha_time.""value"" AS TIMESTAMP))\000d\000a        LIMIT 1 OFFSET 3\000d\000a    ) fourth_activity\000d\000a)\000d\000aSELECT query_id, TraceID, source_event_id, target_event_id, time_diff_minutes\000d\000aFROM (\000d\000a    SELECT pl.TraceID, pl.EventID, pl.Task, pl.Time,\000d\000a           am_source.activity_name as source_activity,\000d\000a           am_target.activity_name as target_activity\000d\000a    FROM process_log pl\000d\000a    CROSS JOIN activity_mapping am_source\000d\000a    CROSS JOIN activity_mapping am_target\000d\000a    WHERE am_source.activity_id = 1 AND am_target.activity_id = 3\000d\000a) extended_log\000d\000a[*]MATCH_RECOGNIZE (\000d\000a  PARTITION BY TraceID\000d\000a  ORDER BY Time\000d\000a  MEASURES\000d\000a    'Q2_Response_>EQ' as query_id,\000d\000a    A.TraceID as TraceID,\000d\000a    A.EventID as source_event_id,\000d\000a    B.EventID as target_event_id,\000d\000a    DATEDIFF('MINUTE', A.Time, B.Time) as time_diff_minutes\000d\000a  PATTERN (A B)\000d\000a  DEFINE\000d\000a    A AS Task = source_activity,\000d\000a    B AS Task = target_activity AND DATEDIFF('MINUTE', A.Time, Time) >= 15000\000d\000a)"; SQL statement:
+-- Query 2: 1 3 MIN 15000
+WITH activity_mapping AS (
+    SELECT 1 as activity_id, activity_name FROM (
+        SELECT eha_activity."value" as activity_name,
+               MIN(CAST(eha_time."value" AS TIMESTAMP)) as first_timestamp
+        FROM event_has_attribute eha_activity
+        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity."key" = 'concept:name'
+        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id
+        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time."key" = 'time:timestamp'
+        GROUP BY eha_activity."value"
+        ORDER BY MIN(CAST(eha_time."value" AS TIMESTAMP))
+        LIMIT 1
+    ) first_activity
+    UNION ALL
+    SELECT 2 as activity_id, activity_name FROM (
+        SELECT eha_activity."value" as activity_name,
+               MIN(CAST(eha_time."value" AS TIMESTAMP)) as first_timestamp
+        FROM event_has_attribute eha_activity
+        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity."key" = 'concept:name'
+        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id
+        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time."key" = 'time:timestamp'
+        GROUP BY eha_activity."value"
+        ORDER BY MIN(CAST(eha_time."value" AS TIMESTAMP))
+        LIMIT 1 OFFSET 1
+    ) second_activity
+    UNION ALL
+    SELECT 3 as activity_id, activity_name FROM (
+        SELECT eha_activity."value" as activity_name,
+               MIN(CAST(eha_time."value" AS TIMESTAMP)) as first_timestamp
+        FROM event_has_attribute eha_activity
+        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity."key" = 'concept:name'
+        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id
+        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time."key" = 'time:timestamp'
+        GROUP BY eha_activity."value"
+        ORDER BY MIN(CAST(eha_time."value" AS TIMESTAMP))
+        LIMIT 1 OFFSET 2
+    ) third_activity
+    UNION ALL
+    SELECT 4 as activity_id, activity_name FROM (
+        SELECT eha_activity."value" as activity_name,
+               MIN(CAST(eha_time."value" AS TIMESTAMP)) as first_timestamp
+        FROM event_has_attribute eha_activity
+        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity."key" = 'concept:name'
+        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id
+        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time."key" = 'time:timestamp'
+        GROUP BY eha_activity."value"
+        ORDER BY MIN(CAST(eha_time."value" AS TIMESTAMP))
+        LIMIT 1 OFFSET 3
+    ) fourth_activity
+)
+SELECT query_id, TraceID, source_event_id, target_event_id, time_diff_minutes
+FROM (
+    SELECT pl.TraceID, pl.EventID, pl.Task, pl.Time,
+           am_source.activity_name as source_activity,
+           am_target.activity_name as target_activity
+    FROM process_log pl
+    CROSS JOIN activity_mapping am_source
+    CROSS JOIN activity_mapping am_target
+    WHERE am_source.activity_id = 1 AND am_target.activity_id = 3
+) extended_log
+MATCH_RECOGNIZE (
+  PARTITION BY TraceID
+  ORDER BY Time
+  MEASURES
+    'Q2_Response_>EQ' as query_id,
+    A.TraceID as TraceID,
+    A.EventID as source_event_id,
+    B.EventID as target_event_id,
+    DATEDIFF('MINUTE', A.Time, B.Time) as time_diff_minutes
+  PATTERN (A B)
+  DEFINE
+    A AS Task = source_activity,
+    B AS Task = target_activity AND DATEDIFF('MINUTE', A.Time, Time) >= 15000
+) [42000-232]
+2025-08-29 14:00:23.601041+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "-- Query 3: 2 4 EXACT 1880\000d\000aWITH activity_mapping AS (\000d\000a    SELECT 1 as activity_id, activity_name FROM (\000d\000a        SELECT eha_activity.""value"" as activity_name,\000d\000a               MIN(CAST(eha_time.""value"" AS TIMESTAMP)) as first_timestamp\000d\000a        FROM event_has_attribute eha_activity\000d\000a        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity.""key"" = 'concept:name'\000d\000a        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id\000d\000a        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time.""key"" = 'time:timestamp'\000d\000a        GROUP BY eha_activity.""value""\000d\000a        ORDER BY MIN(CAST(eha_time.""value"" AS TIMESTAMP))\000d\000a        LIMIT 1\000d\000a    ) first_activity\000d\000a    UNION ALL\000d\000a    SELECT 2 as activity_id, activity_name FROM (\000d\000a        SELECT eha_activity.""value"" as activity_name,\000d\000a               MIN(CAST(eha_time.""value"" AS TIMESTAMP)) as first_timestamp\000d\000a        FROM event_has_attribute eha_activity\000d\000a        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity.""key"" = 'concept:name'\000d\000a        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id\000d\000a        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time.""key"" = 'time:timestamp'\000d\000a        GROUP BY eha_activity.""value""\000d\000a        ORDER BY MIN(CAST(eha_time.""value"" AS TIMESTAMP))\000d\000a        LIMIT 1 OFFSET 1\000d\000a    ) second_activity\000d\000a    UNION ALL\000d\000a    SELECT 3 as activity_id, activity_name FROM (\000d\000a        SELECT eha_activity.""value"" as activity_name,\000d\000a               MIN(CAST(eha_time.""value"" AS TIMESTAMP)) as first_timestamp\000d\000a        FROM event_has_attribute eha_activity\000d\000a        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity.""key"" = 'concept:name'\000d\000a        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id\000d\000a        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time.""key"" = 'time:timestamp'\000d\000a        GROUP BY eha_activity.""value""\000d\000a        ORDER BY MIN(CAST(eha_time.""value"" AS TIMESTAMP))\000d\000a        LIMIT 1 OFFSET 2\000d\000a    ) third_activity\000d\000a    UNION ALL\000d\000a    SELECT 4 as activity_id, activity_name FROM (\000d\000a        SELECT eha_activity.""value"" as activity_name,\000d\000a               MIN(CAST(eha_time.""value"" AS TIMESTAMP)) as first_timestamp\000d\000a        FROM event_has_attribute eha_activity\000d\000a        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity.""key"" = 'concept:name'\000d\000a        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id\000d\000a        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time.""key"" = 'time:timestamp'\000d\000a        GROUP BY eha_activity.""value""\000d\000a        ORDER BY MIN(CAST(eha_time.""value"" AS TIMESTAMP))\000d\000a        LIMIT 1 OFFSET 3\000d\000a    ) fourth_activity\000d\000a)\000d\000aSELECT query_id, TraceID, source_event_id, target_event_id, time_diff_minutes\000d\000aFROM (\000d\000a    SELECT pl.TraceID, pl.EventID, pl.Task, pl.Time,\000d\000a           am_source.activity_name as source_activity,\000d\000a           am_target.activity_name as target_activity\000d\000a    FROM process_log pl\000d\000a    CROSS JOIN activity_mapping am_source\000d\000a    CROSS JOIN activity_mapping am_target\000d\000a    WHERE am_source.activity_id = 2 AND am_target.activity_id = 4\000d\000a) extended_log\000d\000a[*]MATCH_RECOGNIZE (\000d\000a  PARTITION BY TraceID\000d\000a  ORDER BY Time\000d\000a  MEASURES\000d\000a    'Q3_Response_EQ' as query_id,\000d\000a    A.TraceID as TraceID,\000d\000a    A.EventID as source_event_id,\000d\000a    B.EventID as target_event_id,\000d\000a    DATEDIFF('MINUTE', A.Time, B.Time) as time_diff_minutes\000d\000a  PATTERN (A B)\000d\000a  DEFINE\000d\000a    A AS Task = source_activity,\000d\000a    B AS Task = target_activity AND DATEDIFF('MINUTE', A.Time, Time) = 1880\000d\000a)"; SQL statement:
+-- Query 3: 2 4 EXACT 1880
+WITH activity_mapping AS (
+    SELECT 1 as activity_id, activity_name FROM (
+        SELECT eha_activity."value" as activity_name,
+               MIN(CAST(eha_time."value" AS TIMESTAMP)) as first_timestamp
+        FROM event_has_attribute eha_activity
+        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity."key" = 'concept:name'
+        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id
+        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time."key" = 'time:timestamp'
+        GROUP BY eha_activity."value"
+        ORDER BY MIN(CAST(eha_time."value" AS TIMESTAMP))
+        LIMIT 1
+    ) first_activity
+    UNION ALL
+    SELECT 2 as activity_id, activity_name FROM (
+        SELECT eha_activity."value" as activity_name,
+               MIN(CAST(eha_time."value" AS TIMESTAMP)) as first_timestamp
+        FROM event_has_attribute eha_activity
+        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity."key" = 'concept:name'
+        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id
+        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time."key" = 'time:timestamp'
+        GROUP BY eha_activity."value"
+        ORDER BY MIN(CAST(eha_time."value" AS TIMESTAMP))
+        LIMIT 1 OFFSET 1
+    ) second_activity
+    UNION ALL
+    SELECT 3 as activity_id, activity_name FROM (
+        SELECT eha_activity."value" as activity_name,
+               MIN(CAST(eha_time."value" AS TIMESTAMP)) as first_timestamp
+        FROM event_has_attribute eha_activity
+        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity."key" = 'concept:name'
+        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id
+        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time."key" = 'time:timestamp'
+        GROUP BY eha_activity."value"
+        ORDER BY MIN(CAST(eha_time."value" AS TIMESTAMP))
+        LIMIT 1 OFFSET 2
+    ) third_activity
+    UNION ALL
+    SELECT 4 as activity_id, activity_name FROM (
+        SELECT eha_activity."value" as activity_name,
+               MIN(CAST(eha_time."value" AS TIMESTAMP)) as first_timestamp
+        FROM event_has_attribute eha_activity
+        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity."key" = 'concept:name'
+        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id
+        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time."key" = 'time:timestamp'
+        GROUP BY eha_activity."value"
+        ORDER BY MIN(CAST(eha_time."value" AS TIMESTAMP))
+        LIMIT 1 OFFSET 3
+    ) fourth_activity
+)
+SELECT query_id, TraceID, source_event_id, target_event_id, time_diff_minutes
+FROM (
+    SELECT pl.TraceID, pl.EventID, pl.Task, pl.Time,
+           am_source.activity_name as source_activity,
+           am_target.activity_name as target_activity
+    FROM process_log pl
+    CROSS JOIN activity_mapping am_source
+    CROSS JOIN activity_mapping am_target
+    WHERE am_source.activity_id = 2 AND am_target.activity_id = 4
+) extended_log
+MATCH_RECOGNIZE (
+  PARTITION BY TraceID
+  ORDER BY Time
+  MEASURES
+    'Q3_Response_EQ' as query_id,
+    A.TraceID as TraceID,
+    A.EventID as source_event_id,
+    B.EventID as target_event_id,
+    DATEDIFF('MINUTE', A.Time, B.Time) as time_diff_minutes
+  PATTERN (A B)
+  DEFINE
+    A AS Task = source_activity,
+    B AS Task = target_activity AND DATEDIFF('MINUTE', A.Time, Time) = 1880
+) [42000-232]
+2025-08-29 14:02:14.900722+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "-- MATCH_RECOGNIZE SQL Queries with Dynamic Activity Mapping\000d\000a-- Generated from rules file\000d\000a-- Using process_log view and automatic activity discovery\000d\000a-- No manual replacement needed - fully automated!\000d\000a\000d\000a-- Query 1: 1 3 MAX 1000\000d\000aWITH activity_mapping AS (\000d\000a    SELECT 1 as activity_id, activity_name FROM (\000d\000a        SELECT eha_activity.""value"" as activity_name,\000d\000a               MIN(CAST(eha_time.""value"" AS TIMESTAMP)) as first_timestamp\000d\000a        FROM event_has_attribute eha_activity\000d\000a        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity.""key"" = 'concept:name'\000d\000a        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id\000d\000a        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time.""key"" = 'time:timestamp'\000d\000a        GROUP BY eha_activity.""value""\000d\000a        ORDER BY MIN(CAST(eha_time.""value"" AS TIMESTAMP))\000d\000a        LIMIT 1\000d\000a    ) first_activity\000d\000a    UNION ALL\000d\000a    SELECT 2 as activity_id, activity_name FROM (\000d\000a        SELECT eha_activity.""value"" as activity_name,\000d\000a               MIN(CAST(eha_time.""value"" AS TIMESTAMP)) as first_timestamp\000d\000a        FROM event_has_attribute eha_activity\000d\000a        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity.""key"" = 'concept:name'\000d\000a        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id\000d\000a        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time.""key"" = 'time:timestamp'\000d\000a        GROUP BY eha_activity.""value""\000d\000a        ORDER BY MIN(CAST(eha_time.""value"" AS TIMESTAMP))\000d\000a        LIMIT 1 OFFSET 1\000d\000a    ) second_activity\000d\000a    UNION ALL\000d\000a    SELECT 3 as activity_id, activity_name FROM (\000d\000a        SELECT eha_activity.""value"" as activity_name,\000d\000a               MIN(CAST(eha_time.""value"" AS TIMESTAMP)) as first_timestamp\000d\000a        FROM event_has_attribute eha_activity\000d\000a        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity.""key"" = 'concept:name'\000d\000a        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id\000d\000a        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time.""key"" = 'time:timestamp'\000d\000a        GROUP BY eha_activity.""value""\000d\000a        ORDER BY MIN(CAST(eha_time.""value"" AS TIMESTAMP))\000d\000a        LIMIT 1 OFFSET 2\000d\000a    ) third_activity\000d\000a    UNION ALL\000d\000a    SELECT 4 as activity_id, activity_name FROM (\000d\000a        SELECT eha_activity.""value"" as activity_name,\000d\000a               MIN(CAST(eha_time.""value"" AS TIMESTAMP)) as first_timestamp\000d\000a        FROM event_has_attribute eha_activity\000d\000a        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity.""key"" = 'concept:name'\000d\000a        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id\000d\000a        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time.""key"" = 'time:timestamp'\000d\000a        GROUP BY eha_activity.""value""\000d\000a        ORDER BY MIN(CAST(eha_time.""value"" AS TIMESTAMP))\000d\000a        LIMIT 1 OFFSET 3\000d\000a    ) fourth_activity\000d\000a)\000d\000aSELECT query_id, TraceID, source_event_id, target_event_id, time_diff_minutes\000d\000aFROM (\000d\000a    SELECT pl.TraceID, pl.EventID, pl.Task, pl.Time,\000d\000a           am_source.activity_name as source_activity,\000d\000a           am_target.activity_name as target_activity\000d\000a    FROM process_log pl\000d\000a    CROSS JOIN activity_mapping am_source\000d\000a    CROSS JOIN activity_mapping am_target\000d\000a    WHERE am_source.activity_id = 1 AND am_target.activity_id = 3\000d\000a) extended_log\000d\000a[*]MATCH_RECOGNIZE (\000d\000a  PARTITION BY TraceID\000d\000a  ORDER BY Time\000d\000a  MEASURES\000d\000a    'Q1_Response_<EQ' as query_id,\000d\000a    A.TraceID as TraceID,\000d\000a    A.EventID as source_event_id,\000d\000a    B.EventID as target_event_id,\000d\000a    DATEDIFF('MINUTE', A.Time, B.Time) as time_diff_minutes\000d\000a  PATTERN (A B)\000d\000a  DEFINE\000d\000a    A AS Task = source_activity,\000d\000a    B AS Task = target_activity AND DATEDIFF('MINUTE', A.Time, Time) <= 1000\000d\000a)"; SQL statement:
+-- MATCH_RECOGNIZE SQL Queries with Dynamic Activity Mapping
+-- Generated from rules file
+-- Using process_log view and automatic activity discovery
+-- No manual replacement needed - fully automated!
+
+-- Query 1: 1 3 MAX 1000
+WITH activity_mapping AS (
+    SELECT 1 as activity_id, activity_name FROM (
+        SELECT eha_activity."value" as activity_name,
+               MIN(CAST(eha_time."value" AS TIMESTAMP)) as first_timestamp
+        FROM event_has_attribute eha_activity
+        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity."key" = 'concept:name'
+        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id
+        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time."key" = 'time:timestamp'
+        GROUP BY eha_activity."value"
+        ORDER BY MIN(CAST(eha_time."value" AS TIMESTAMP))
+        LIMIT 1
+    ) first_activity
+    UNION ALL
+    SELECT 2 as activity_id, activity_name FROM (
+        SELECT eha_activity."value" as activity_name,
+               MIN(CAST(eha_time."value" AS TIMESTAMP)) as first_timestamp
+        FROM event_has_attribute eha_activity
+        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity."key" = 'concept:name'
+        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id
+        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time."key" = 'time:timestamp'
+        GROUP BY eha_activity."value"
+        ORDER BY MIN(CAST(eha_time."value" AS TIMESTAMP))
+        LIMIT 1 OFFSET 1
+    ) second_activity
+    UNION ALL
+    SELECT 3 as activity_id, activity_name FROM (
+        SELECT eha_activity."value" as activity_name,
+               MIN(CAST(eha_time."value" AS TIMESTAMP)) as first_timestamp
+        FROM event_has_attribute eha_activity
+        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity."key" = 'concept:name'
+        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id
+        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time."key" = 'time:timestamp'
+        GROUP BY eha_activity."value"
+        ORDER BY MIN(CAST(eha_time."value" AS TIMESTAMP))
+        LIMIT 1 OFFSET 2
+    ) third_activity
+    UNION ALL
+    SELECT 4 as activity_id, activity_name FROM (
+        SELECT eha_activity."value" as activity_name,
+               MIN(CAST(eha_time."value" AS TIMESTAMP)) as first_timestamp
+        FROM event_has_attribute eha_activity
+        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity."key" = 'concept:name'
+        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id
+        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time."key" = 'time:timestamp'
+        GROUP BY eha_activity."value"
+        ORDER BY MIN(CAST(eha_time."value" AS TIMESTAMP))
+        LIMIT 1 OFFSET 3
+    ) fourth_activity
+)
+SELECT query_id, TraceID, source_event_id, target_event_id, time_diff_minutes
+FROM (
+    SELECT pl.TraceID, pl.EventID, pl.Task, pl.Time,
+           am_source.activity_name as source_activity,
+           am_target.activity_name as target_activity
+    FROM process_log pl
+    CROSS JOIN activity_mapping am_source
+    CROSS JOIN activity_mapping am_target
+    WHERE am_source.activity_id = 1 AND am_target.activity_id = 3
+) extended_log
+MATCH_RECOGNIZE (
+  PARTITION BY TraceID
+  ORDER BY Time
+  MEASURES
+    'Q1_Response_<EQ' as query_id,
+    A.TraceID as TraceID,
+    A.EventID as source_event_id,
+    B.EventID as target_event_id,
+    DATEDIFF('MINUTE', A.Time, B.Time) as time_diff_minutes
+  PATTERN (A B)
+  DEFINE
+    A AS Task = source_activity,
+    B AS Task = target_activity AND DATEDIFF('MINUTE', A.Time, Time) <= 1000
+) [42000-232]
+2025-08-29 14:02:14.903746+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "-- Query 2: 1 3 MIN 15000\000d\000aWITH activity_mapping AS (\000d\000a    SELECT 1 as activity_id, activity_name FROM (\000d\000a        SELECT eha_activity.""value"" as activity_name,\000d\000a               MIN(CAST(eha_time.""value"" AS TIMESTAMP)) as first_timestamp\000d\000a        FROM event_has_attribute eha_activity\000d\000a        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity.""key"" = 'concept:name'\000d\000a        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id\000d\000a        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time.""key"" = 'time:timestamp'\000d\000a        GROUP BY eha_activity.""value""\000d\000a        ORDER BY MIN(CAST(eha_time.""value"" AS TIMESTAMP))\000d\000a        LIMIT 1\000d\000a    ) first_activity\000d\000a    UNION ALL\000d\000a    SELECT 2 as activity_id, activity_name FROM (\000d\000a        SELECT eha_activity.""value"" as activity_name,\000d\000a               MIN(CAST(eha_time.""value"" AS TIMESTAMP)) as first_timestamp\000d\000a        FROM event_has_attribute eha_activity\000d\000a        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity.""key"" = 'concept:name'\000d\000a        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id\000d\000a        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time.""key"" = 'time:timestamp'\000d\000a        GROUP BY eha_activity.""value""\000d\000a        ORDER BY MIN(CAST(eha_time.""value"" AS TIMESTAMP))\000d\000a        LIMIT 1 OFFSET 1\000d\000a    ) second_activity\000d\000a    UNION ALL\000d\000a    SELECT 3 as activity_id, activity_name FROM (\000d\000a        SELECT eha_activity.""value"" as activity_name,\000d\000a               MIN(CAST(eha_time.""value"" AS TIMESTAMP)) as first_timestamp\000d\000a        FROM event_has_attribute eha_activity\000d\000a        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity.""key"" = 'concept:name'\000d\000a        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id\000d\000a        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time.""key"" = 'time:timestamp'\000d\000a        GROUP BY eha_activity.""value""\000d\000a        ORDER BY MIN(CAST(eha_time.""value"" AS TIMESTAMP))\000d\000a        LIMIT 1 OFFSET 2\000d\000a    ) third_activity\000d\000a    UNION ALL\000d\000a    SELECT 4 as activity_id, activity_name FROM (\000d\000a        SELECT eha_activity.""value"" as activity_name,\000d\000a               MIN(CAST(eha_time.""value"" AS TIMESTAMP)) as first_timestamp\000d\000a        FROM event_has_attribute eha_activity\000d\000a        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity.""key"" = 'concept:name'\000d\000a        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id\000d\000a        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time.""key"" = 'time:timestamp'\000d\000a        GROUP BY eha_activity.""value""\000d\000a        ORDER BY MIN(CAST(eha_time.""value"" AS TIMESTAMP))\000d\000a        LIMIT 1 OFFSET 3\000d\000a    ) fourth_activity\000d\000a)\000d\000aSELECT query_id, TraceID, source_event_id, target_event_id, time_diff_minutes\000d\000aFROM (\000d\000a    SELECT pl.TraceID, pl.EventID, pl.Task, pl.Time,\000d\000a           am_source.activity_name as source_activity,\000d\000a           am_target.activity_name as target_activity\000d\000a    FROM process_log pl\000d\000a    CROSS JOIN activity_mapping am_source\000d\000a    CROSS JOIN activity_mapping am_target\000d\000a    WHERE am_source.activity_id = 1 AND am_target.activity_id = 3\000d\000a) extended_log\000d\000a[*]MATCH_RECOGNIZE (\000d\000a  PARTITION BY TraceID\000d\000a  ORDER BY Time\000d\000a  MEASURES\000d\000a    'Q2_Response_>EQ' as query_id,\000d\000a    A.TraceID as TraceID,\000d\000a    A.EventID as source_event_id,\000d\000a    B.EventID as target_event_id,\000d\000a    DATEDIFF('MINUTE', A.Time, B.Time) as time_diff_minutes\000d\000a  PATTERN (A B)\000d\000a  DEFINE\000d\000a    A AS Task = source_activity,\000d\000a    B AS Task = target_activity AND DATEDIFF('MINUTE', A.Time, Time) >= 15000\000d\000a)"; SQL statement:
+-- Query 2: 1 3 MIN 15000
+WITH activity_mapping AS (
+    SELECT 1 as activity_id, activity_name FROM (
+        SELECT eha_activity."value" as activity_name,
+               MIN(CAST(eha_time."value" AS TIMESTAMP)) as first_timestamp
+        FROM event_has_attribute eha_activity
+        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity."key" = 'concept:name'
+        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id
+        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time."key" = 'time:timestamp'
+        GROUP BY eha_activity."value"
+        ORDER BY MIN(CAST(eha_time."value" AS TIMESTAMP))
+        LIMIT 1
+    ) first_activity
+    UNION ALL
+    SELECT 2 as activity_id, activity_name FROM (
+        SELECT eha_activity."value" as activity_name,
+               MIN(CAST(eha_time."value" AS TIMESTAMP)) as first_timestamp
+        FROM event_has_attribute eha_activity
+        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity."key" = 'concept:name'
+        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id
+        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time."key" = 'time:timestamp'
+        GROUP BY eha_activity."value"
+        ORDER BY MIN(CAST(eha_time."value" AS TIMESTAMP))
+        LIMIT 1 OFFSET 1
+    ) second_activity
+    UNION ALL
+    SELECT 3 as activity_id, activity_name FROM (
+        SELECT eha_activity."value" as activity_name,
+               MIN(CAST(eha_time."value" AS TIMESTAMP)) as first_timestamp
+        FROM event_has_attribute eha_activity
+        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity."key" = 'concept:name'
+        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id
+        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time."key" = 'time:timestamp'
+        GROUP BY eha_activity."value"
+        ORDER BY MIN(CAST(eha_time."value" AS TIMESTAMP))
+        LIMIT 1 OFFSET 2
+    ) third_activity
+    UNION ALL
+    SELECT 4 as activity_id, activity_name FROM (
+        SELECT eha_activity."value" as activity_name,
+               MIN(CAST(eha_time."value" AS TIMESTAMP)) as first_timestamp
+        FROM event_has_attribute eha_activity
+        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity."key" = 'concept:name'
+        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id
+        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time."key" = 'time:timestamp'
+        GROUP BY eha_activity."value"
+        ORDER BY MIN(CAST(eha_time."value" AS TIMESTAMP))
+        LIMIT 1 OFFSET 3
+    ) fourth_activity
+)
+SELECT query_id, TraceID, source_event_id, target_event_id, time_diff_minutes
+FROM (
+    SELECT pl.TraceID, pl.EventID, pl.Task, pl.Time,
+           am_source.activity_name as source_activity,
+           am_target.activity_name as target_activity
+    FROM process_log pl
+    CROSS JOIN activity_mapping am_source
+    CROSS JOIN activity_mapping am_target
+    WHERE am_source.activity_id = 1 AND am_target.activity_id = 3
+) extended_log
+MATCH_RECOGNIZE (
+  PARTITION BY TraceID
+  ORDER BY Time
+  MEASURES
+    'Q2_Response_>EQ' as query_id,
+    A.TraceID as TraceID,
+    A.EventID as source_event_id,
+    B.EventID as target_event_id,
+    DATEDIFF('MINUTE', A.Time, B.Time) as time_diff_minutes
+  PATTERN (A B)
+  DEFINE
+    A AS Task = source_activity,
+    B AS Task = target_activity AND DATEDIFF('MINUTE', A.Time, Time) >= 15000
+) [42000-232]
+2025-08-29 14:02:14.907038+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "-- Query 3: 2 4 EXACT 1880\000d\000aWITH activity_mapping AS (\000d\000a    SELECT 1 as activity_id, activity_name FROM (\000d\000a        SELECT eha_activity.""value"" as activity_name,\000d\000a               MIN(CAST(eha_time.""value"" AS TIMESTAMP)) as first_timestamp\000d\000a        FROM event_has_attribute eha_activity\000d\000a        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity.""key"" = 'concept:name'\000d\000a        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id\000d\000a        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time.""key"" = 'time:timestamp'\000d\000a        GROUP BY eha_activity.""value""\000d\000a        ORDER BY MIN(CAST(eha_time.""value"" AS TIMESTAMP))\000d\000a        LIMIT 1\000d\000a    ) first_activity\000d\000a    UNION ALL\000d\000a    SELECT 2 as activity_id, activity_name FROM (\000d\000a        SELECT eha_activity.""value"" as activity_name,\000d\000a               MIN(CAST(eha_time.""value"" AS TIMESTAMP)) as first_timestamp\000d\000a        FROM event_has_attribute eha_activity\000d\000a        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity.""key"" = 'concept:name'\000d\000a        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id\000d\000a        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time.""key"" = 'time:timestamp'\000d\000a        GROUP BY eha_activity.""value""\000d\000a        ORDER BY MIN(CAST(eha_time.""value"" AS TIMESTAMP))\000d\000a        LIMIT 1 OFFSET 1\000d\000a    ) second_activity\000d\000a    UNION ALL\000d\000a    SELECT 3 as activity_id, activity_name FROM (\000d\000a        SELECT eha_activity.""value"" as activity_name,\000d\000a               MIN(CAST(eha_time.""value"" AS TIMESTAMP)) as first_timestamp\000d\000a        FROM event_has_attribute eha_activity\000d\000a        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity.""key"" = 'concept:name'\000d\000a        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id\000d\000a        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time.""key"" = 'time:timestamp'\000d\000a        GROUP BY eha_activity.""value""\000d\000a        ORDER BY MIN(CAST(eha_time.""value"" AS TIMESTAMP))\000d\000a        LIMIT 1 OFFSET 2\000d\000a    ) third_activity\000d\000a    UNION ALL\000d\000a    SELECT 4 as activity_id, activity_name FROM (\000d\000a        SELECT eha_activity.""value"" as activity_name,\000d\000a               MIN(CAST(eha_time.""value"" AS TIMESTAMP)) as first_timestamp\000d\000a        FROM event_has_attribute eha_activity\000d\000a        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity.""key"" = 'concept:name'\000d\000a        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id\000d\000a        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time.""key"" = 'time:timestamp'\000d\000a        GROUP BY eha_activity.""value""\000d\000a        ORDER BY MIN(CAST(eha_time.""value"" AS TIMESTAMP))\000d\000a        LIMIT 1 OFFSET 3\000d\000a    ) fourth_activity\000d\000a)\000d\000aSELECT query_id, TraceID, source_event_id, target_event_id, time_diff_minutes\000d\000aFROM (\000d\000a    SELECT pl.TraceID, pl.EventID, pl.Task, pl.Time,\000d\000a           am_source.activity_name as source_activity,\000d\000a           am_target.activity_name as target_activity\000d\000a    FROM process_log pl\000d\000a    CROSS JOIN activity_mapping am_source\000d\000a    CROSS JOIN activity_mapping am_target\000d\000a    WHERE am_source.activity_id = 2 AND am_target.activity_id = 4\000d\000a) extended_log\000d\000a[*]MATCH_RECOGNIZE (\000d\000a  PARTITION BY TraceID\000d\000a  ORDER BY Time\000d\000a  MEASURES\000d\000a    'Q3_Response_EQ' as query_id,\000d\000a    A.TraceID as TraceID,\000d\000a    A.EventID as source_event_id,\000d\000a    B.EventID as target_event_id,\000d\000a    DATEDIFF('MINUTE', A.Time, B.Time) as time_diff_minutes\000d\000a  PATTERN (A B)\000d\000a  DEFINE\000d\000a    A AS Task = source_activity,\000d\000a    B AS Task = target_activity AND DATEDIFF('MINUTE', A.Time, Time) = 1880\000d\000a)"; SQL statement:
+-- Query 3: 2 4 EXACT 1880
+WITH activity_mapping AS (
+    SELECT 1 as activity_id, activity_name FROM (
+        SELECT eha_activity."value" as activity_name,
+               MIN(CAST(eha_time."value" AS TIMESTAMP)) as first_timestamp
+        FROM event_has_attribute eha_activity
+        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity."key" = 'concept:name'
+        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id
+        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time."key" = 'time:timestamp'
+        GROUP BY eha_activity."value"
+        ORDER BY MIN(CAST(eha_time."value" AS TIMESTAMP))
+        LIMIT 1
+    ) first_activity
+    UNION ALL
+    SELECT 2 as activity_id, activity_name FROM (
+        SELECT eha_activity."value" as activity_name,
+               MIN(CAST(eha_time."value" AS TIMESTAMP)) as first_timestamp
+        FROM event_has_attribute eha_activity
+        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity."key" = 'concept:name'
+        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id
+        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time."key" = 'time:timestamp'
+        GROUP BY eha_activity."value"
+        ORDER BY MIN(CAST(eha_time."value" AS TIMESTAMP))
+        LIMIT 1 OFFSET 1
+    ) second_activity
+    UNION ALL
+    SELECT 3 as activity_id, activity_name FROM (
+        SELECT eha_activity."value" as activity_name,
+               MIN(CAST(eha_time."value" AS TIMESTAMP)) as first_timestamp
+        FROM event_has_attribute eha_activity
+        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity."key" = 'concept:name'
+        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id
+        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time."key" = 'time:timestamp'
+        GROUP BY eha_activity."value"
+        ORDER BY MIN(CAST(eha_time."value" AS TIMESTAMP))
+        LIMIT 1 OFFSET 2
+    ) third_activity
+    UNION ALL
+    SELECT 4 as activity_id, activity_name FROM (
+        SELECT eha_activity."value" as activity_name,
+               MIN(CAST(eha_time."value" AS TIMESTAMP)) as first_timestamp
+        FROM event_has_attribute eha_activity
+        JOIN attribute a_activity ON eha_activity.attr_id = a_activity.id AND a_activity."key" = 'concept:name'
+        JOIN event_has_attribute eha_time ON eha_activity.event_id = eha_time.event_id
+        JOIN attribute a_time ON eha_time.attr_id = a_time.id AND a_time."key" = 'time:timestamp'
+        GROUP BY eha_activity."value"
+        ORDER BY MIN(CAST(eha_time."value" AS TIMESTAMP))
+        LIMIT 1 OFFSET 3
+    ) fourth_activity
+)
+SELECT query_id, TraceID, source_event_id, target_event_id, time_diff_minutes
+FROM (
+    SELECT pl.TraceID, pl.EventID, pl.Task, pl.Time,
+           am_source.activity_name as source_activity,
+           am_target.activity_name as target_activity
+    FROM process_log pl
+    CROSS JOIN activity_mapping am_source
+    CROSS JOIN activity_mapping am_target
+    WHERE am_source.activity_id = 2 AND am_target.activity_id = 4
+) extended_log
+MATCH_RECOGNIZE (
+  PARTITION BY TraceID
+  ORDER BY Time
+  MEASURES
+    'Q3_Response_EQ' as query_id,
+    A.TraceID as TraceID,
+    A.EventID as source_event_id,
+    B.EventID as target_event_id,
+    DATEDIFF('MINUTE', A.Time, B.Time) as time_diff_minutes
+  PATTERN (A B)
+  DEFINE
+    A AS Task = source_activity,
+    B AS Task = target_activity AND DATEDIFF('MINUTE', A.Time, Time) = 1880
+) [42000-232]
